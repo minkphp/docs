@@ -703,3 +703,8 @@ articles in order to understand how you can use them with Mink:
 * :doc:`phpunit`
 * `Developing Web Applications with Behat and Mink <http://docs.behat.org/cookbook/behat_and_mink.html>`_
 * :doc:`bundle/index`
+
+Mink API
+--------
+
+Find out all available functions in `Mink API <http://mink.behat.org/api/>`_.
