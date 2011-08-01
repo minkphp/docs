@@ -249,7 +249,7 @@ emulator with it:
 .. code-block:: php
 
     // open some page in browser:
-    $session->visit('http://my_project.dev/some_page.php')
+    $session->visit('http://my_project.dev/some_page.php');
 
     // get the current page URL:
     echo $session->getCurrentUrl();
