@@ -115,7 +115,7 @@ or maniupage page elements ("`Manipulate the Page - NodeElement`_").
 Different Browsers - Drivers
 ----------------------------
 
-How Mink provides consisten API for very different browser library types, often
+How does Mink provides a consistent API for very different browser library types, often
 written in different languages? Through drivers! Mink driver is a simple class,
 that implements ``Behat\Mink\Driver\DriverInterface``. This interface describes
 bridge methods between Mink and real browser emulators. Mink always talks with
@@ -332,7 +332,7 @@ Also, Mink session has special method to perform HTTP Basic authentication:
 Resetting the Session
 ~~~~~~~~~~~~~~~~~~~~~
 
-The primary aim for Mink is to provide single consisten web browsing API for
+The primary aim for Mink is to provide a single consistent web browsing API for
 acceptance tests. But most important part in testing is isolation. We need a
 way to isolate our tests from each other. And Mink provides two very useful
 methods for you to use in your ``teardown()`` methods:
