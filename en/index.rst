@@ -41,13 +41,13 @@ Also, you can use mink phar package:
 
 .. code-block:: bash
 
-    $ wget https://github.com/downloads/Behat/Mink/mink-1.0.2.phar
+    $ wget https://github.com/downloads/Behat/Mink/mink.phar
 
 Now you can require phar package in your project:
 
 .. code-block:: php
 
-    require_once 'mink-1.0.2.phar';
+    require_once 'mink.phar';
 
 Method #3 (Git)
 ~~~~~~~~~~~~~~~
