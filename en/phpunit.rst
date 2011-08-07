@@ -26,8 +26,7 @@ framework. You can use this test case in your PHPUnit acceptance tests:
 Register Custom Sessions
 ------------------------
 
-You can configure your own sessions with ``setUp()`` OR ``registerSessions()``
-methods override:
+You can configure your own sessions with ``registerSessions()`` method override:
 
 .. code-block:: php
 
@@ -40,23 +39,16 @@ methods override:
     
     class MyApplicationTest extends TestCase
     {
-        protected function setUp()
+        protected static function registerSessions(Mink $mink)
         {
-            // don't forget to call parent setUp
-            // in order to be able to use register
-            // default sessions:
-            parent::setUp();
-        }
+            $zendParams = array();
 
-        protected function registerSessions(Mink $mink)
-        {
-            if (!$mink->hasSession('my_gotte')) {
-                $zendParams = array();
+            $mink->registerSession('my_gotte',
+                $this->initGoutteSession($zendParams)
+            );
 
-                $mink->registerSession('my_gotte',
-                    $this->initGoutteSession($zendParams)
-                );
-            }
+            // register all default sessions
+            parent::registerSessions();
         }
 
         public function testSomePage()
