@@ -6,6 +6,25 @@ body > header{
     position:relative;
 }
 
+.versionadded {
+    clear:left;
+    position:relative;
+    text-align:right;
+    border-top:1px solid #eaeded;
+}
+
+.versionmodified {
+    position:relative;
+    font-style:italic;
+    background:#eaeded;
+    color:#000;
+    padding:5px;
+    margin-right:-30px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+}
+
 .install {
     position:absolute;
     top:90px;

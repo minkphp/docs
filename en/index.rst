@@ -136,6 +136,8 @@ Mink comes with three drivers out of the box:
   and able to control every system browser through special bundled proxy
   server.
 
+.. versionadded:: 1.1
+
 * ``ZombieDriver`` - provides bridge for `Zombie.js <http://zombie.labnotes.org/>`_
   browser emulator. Zombie.js is headless browser emulator, written on node.js.
   It supports all JS interactions, that Sahi does and works almost as fast as
@@ -225,7 +227,9 @@ verbose version with second client arugment:
     ``$port`` defines a Sahi proxy port. Default one is ``9999``.
 
 ZombieDriver
-------------
+~~~~~~~~~~~~
+
+.. versionadded:: 1.1
 
 In order to talk with zombie.js server, you should install and configure
 zombie.js first:
