@@ -270,7 +270,7 @@ version with 2 arguments:
 
     $driver = new \Behat\Mink\Driver\ZombieDriver(
         new \Behat\Mink\Driver\Zombie\Connection($host, $port),
-        new \Behat\Mink\Driver\Zombie\Server($host, $port, $nodeBin, $script),
+        new \Behat\Mink\Driver\Zombie\Server($host, $port, $nodeBin, $script)
     );
 
 .. note::
