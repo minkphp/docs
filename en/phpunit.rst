@@ -1,7 +1,7 @@
 Mink's TestCase for PHPUnit
 ===========================
 
-Mink comes with special ``TestCase`` for `PHPUnit <http://www.phpunit.de>`_
+Mink comes with a special ``TestCase`` for the `PHPUnit <http://www.phpunit.de>`_
 framework. You can use this test case in your PHPUnit acceptance tests:
 
 .. code-block:: php
@@ -61,8 +61,8 @@ You can configure your own sessions with ``registerSessions()`` method override:
 Reset the Sessions
 ------------------
 
-Mink will do ``reset()`` of all started sessions in ``teardown()`` by default. So
-if you want to do ``restart()`` actually, you should do it manually:
+Mink will do a ``reset()`` of all started sessions in ``teardown()`` by default.
+So if you want to do ``restart()`` actually, you should do it manually:
 
 .. code-block:: php
 
