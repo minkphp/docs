@@ -71,7 +71,7 @@ Understanding the Mink
 There's huge amount of browser emulators out there, like
 `Goutte <https://github.com/fabpot/goutte>`_, `Selenium <http://seleniumhq.org/>`_,
 `Sahi <http://sahi.co.in/w/>`_ and others. They all do the same job, but do it
-very differently. They behaves differently and have very different API's. But,
+very differently. They behave differently and have very different API's. But,
 what's more important - there's actually 2 completely different types of
 browser emulators out there:
 
@@ -79,18 +79,18 @@ browser emulators out there:
 * Browser controllers
 
 First type browsers are simple pure HTTP specification implementations, like
-`Goutte <https://github.com/fabpot/goutte>`_. Those browser emulators sends
-a real HTTP requests against application and parses response content. They are
-very simple to run and configure, because this type of emulators can be written
-in any available programming language and can be runned through console on
-servers without GUI. Headless emulators have both advantages and disadvantages.
+`Goutte <https://github.com/fabpot/goutte>`_. Those browser emulators send
+a real HTTP requests against an application and parse the response content. They
+are very simple to run and configure, because this type of emulators can be
+written in any available programming language and can be run through console on
+servers without GUI. Headless emulators have both, advantages and disadvantages.
 Advantages are simplicity, speed and ability to run it without the need in real
 browser. But this type of browsers have one big disadvantage - they have no
 JS/AJAX support. So, you can't test your rich GUI web applications with
 headless browsers.
 
 Second browser emulators type are browser controllers. Those emulators
-aims to control the real browser. That's right, the program to control another
+aims to control the real browser. That's right, a program to control another
 program. Browser controllers simulate user interactions on browser and are able
 to retrieve actual information from current browser page. `Selenium <http://seleniumhq.org/>`_
 and `Sahi <http://sahi.co.in/w/>`_ are two most famous browser controllers.
@@ -100,7 +100,7 @@ installed browser, extra configuration are usually much slower than headless
 counterparts.
 
 So, the easy answer is to choose the best emulator for your project and use
-it's API for testing. But as we've already seen, both browser types have both
+its API for testing. But as we've already seen, both browser types have both,
 advantages and disadvantages. If you choose headless browser emulator - you'll
 not be able to test your JS/AJAX pages. And if you choose browser controller -
 your overall test suite will become very slow at some point. So, in real world
@@ -110,40 +110,40 @@ we should use both! And that's why you need a **Mink**.
 different drivers (read in "`Different Browsers - Drivers`_" chapter) for every
 browser emulator and providing you with the easy way to control the browser
 ("`Control the Browser - Session`_"), traverse pages ("`Traverse the Page - Selectors`_")
-or maniupage page elements ("`Manipulate the Page - NodeElement`_").
+or manipulate page elements ("`Manipulate the Page - NodeElement`_").
 
 Different Browsers - Drivers
 ----------------------------
 
-How does Mink provides a consistent API for very different browser library types, often
+How does Mink provide a consistent API for very different browser library types, often
 written in different languages? Through drivers! Mink driver is a simple class,
 that implements ``Behat\Mink\Driver\DriverInterface``. This interface describes
 bridge methods between Mink and real browser emulators. Mink always talks with
-browser emulators through it's driver - it doesn't know anything about how to
+browser emulators through its driver - it doesn't know anything about how to
 start/stop or traverse page in that particular browser emulator - it only knows
 what driver method it should call in order to do this.
 
 Mink comes with three drivers out of the box:
 
-* ``GoutteDriver`` - provides bridge for `Goutte <https://github.com/fabpot/goutte>`_
+* ``GoutteDriver`` - provides a bridge for `Goutte <https://github.com/fabpot/goutte>`_
   headless browser. Goutte is a classical pure-php headless browser, written by
-  creator of Symfony framework - Fabien Potencier.
+  the creator of the Symfony framework - Fabien Potencier.
 
-* ``SahiDriver`` - provides bridge for `Sahi <http://sahi.co.in/w/>`_ browser
-  controller. Sahi is a new JS browser controlled, that fastly replaced old
-  Selenium testing suite. It's both easier to setup and to use than classical
-  Selenium. It has GUI installer for each popular operating system out there
-  and able to control every system browser through special bundled proxy
+* ``SahiDriver`` - provides a bridge for `Sahi <http://sahi.co.in/w/>`_ browser
+  controller. Sahi is a new JS browser controller, that fastly replaced old
+  Selenium testing suite. It's both, easier to setup and to use than classical
+  Selenium. It has a GUI installer for each popular operating system out there
+  and is able to control every systems browser through a special bundled proxy
   server.
 
 .. versionadded:: 1.1
 
-* ``ZombieDriver`` - provides bridge for `Zombie.js <http://zombie.labnotes.org/>`_
-  browser emulator. Zombie.js is headless browser emulator, written on node.js.
-  It supports all JS interactions, that Sahi does and works almost as fast as
-  Goutte does. It's best of both worlds, actually, but still limited to only
-  one browser type (Chromium), also it's still slower than Goutte and requires
-  node.js and npm to be installed on the system.
+* ``ZombieDriver`` - provides a bridge for `Zombie.js <http://zombie.labnotes.org/>`_
+  browser emulator. Zombie.js is a headless browser emulator, written on
+  node.js. It supports all JS interactions that Sahi does and works almost as
+  fast as Goutte does. It's best of both worlds, actually, but still limited to
+  only one browser type (Chromium), also it's still slower than Goutte and
+  requires node.js and npm to be installed on the system.
 
 GoutteDriver
 ~~~~~~~~~~~~
@@ -175,14 +175,14 @@ setup by hands:
 SahiDriver
 ~~~~~~~~~~
 
-In order to talk with real browser through Sahi, you should install and
-configure the Sahi first:
+In order to talk with a real browser through Sahi, you should install and
+configure Sahi first:
 
 1. Download and run the Sahi jar from the `<http://sourceforge.net/projects/sahi/files/>`_
    and run it. It will run the installer, which will guide you through the
    installation process.
 
-2. Run sahi proxy before your test suites (you can start this proxy during
+2. Run Sahi proxy before your test suites (you can start this proxy during
    system startup):
 
     .. code-block:: bash
@@ -202,9 +202,9 @@ it with ``Driver\SahiDriver``:
     Notice, that first argument to ``SahiDriver`` is always a browser name,
     `supported by Sahi <http://sahi.co.in/w/browser-types-xml>`_.
 
-If you want more control during driver initialization. Like, for example if you
-want to configure driver to talk with proxy on another machine - use more
-verbose version with second client arugment:
+If you want more control during driver initialization, like for example if you
+want to configure the driver to talk with a proxy on another machine - use the
+more verbose version with a second client arugment:
 
 .. code-block:: php
 
@@ -216,10 +216,10 @@ verbose version with second client arugment:
 
 .. note::
 
-    ``$sid`` is a Sahi session ID. It's a unique string, used by driver and
+    ``$sid`` is a Sahi session ID. It's a unique string, used by the driver and
     Sahi proxy in order to be able to talk with each other. You should fill
     this with ``null`` if you want Sahi to start your browser automatically
-    or with some uniqe string if you want to control already started browser.
+    or with some uniqe string if you want to control an already started browser.
 
     ``$host`` simply defines the host on which Sahi is started. It's
     ``localhost`` by default.
@@ -256,15 +256,15 @@ After installing npm and zombie.js, you'll need to add npm libs to your
 into your ``.bashrc``.
 
 After that, you'll be able to just use ``ZombieDriver`` without manual
-server setup - driver will do all that for you automatically:
+server setup - the driver will do all that for you automatically:
 
 .. code-block:: php
 
     $driver = new \Behat\Mink\Driver\ZombieDriver();
 
-If you want more control during driver initialization. Like, for example if you
-want to configure driver to init server on specific port - use more verbose
-version with 2 arguments:
+If you want more control during driver initialization, like for example if you
+want to configure the driver to init the server on a specific port - use the
+more verbose version with 2 arguments:
 
 .. code-block:: php
 
@@ -283,12 +283,12 @@ version with 2 arguments:
     ``$nodeBin`` defines full path to node.js binary. Default one is just ``node``.
 
     ``$script`` defines a node.js script to start zombie.js server. If you pass
-    a ``null`` default script will be used. Use this option carefully!
+    a ``null`` the default script will be used. Use this option carefully!
 
 Control the Browser - Session
 -----------------------------
 
-Ok. Now we know how to create the browser driver to talk with specific browser
+Ok. Now we know how to create the browser driver to talk with a specific browser
 emulator. Although we can use drivers directly to call some actions on the
 emulator, Mink provides a better way - ``Session``:
 
@@ -303,7 +303,7 @@ emulator, Mink provides a better way - ``Session``:
 .. note::
 
   As you can see, the first argument to the session (``$driver``) is just a
-  simple driver instance, which we created in previous chapter.
+  simple driver instance, which we created in the previous chapter.
 
 ``start()`` call is required in order to configure the browser emulator or
 controller to be fully functional.
@@ -311,8 +311,8 @@ controller to be fully functional.
 Basic Browser Interaction
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After you've instantiated ``$session`` object, you can control actual browser
-emulator with it:
+After you've instantiated the ``$session`` object, you can control the actual
+browser emulator with it:
 
 .. code-block:: php
 
@@ -349,16 +349,16 @@ emulator with it:
 
 .. note::
 
-    Although Mink does it's best on removing browser differences between
+    Although Mink does its best on removing browser differences between
     different browser emulators - it can't do much in some cases. For example,
     ``GoutteDriver`` can't evaluate JavaScript and ``SahiDriver`` can't get
-    the response status code. In such cases, driver will always throw
+    the response status code. In such cases, the driver will always throw
     meaningful ``Behat\Mink\Exception\UnsupportedDriverActionException``.
 
 Cookies and Headers management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-With ``Mink\Session`` you can controll your browser cookies and headers:
+With ``Mink\Session`` you can controll your browsers cookies and headers:
 
 .. code-block:: php
 
@@ -385,7 +385,7 @@ With ``Mink\Session`` you can controll your browser cookies and headers:
 HTTP Authentication
 ~~~~~~~~~~~~~~~~~~~
 
-Also, Mink session has special method to perform HTTP Basic authentication:
+Also, Mink session has a special method to perform HTTP Basic authentication:
 
 .. code-block:: php
 
@@ -417,15 +417,15 @@ Both methods do exactly the same job for headless browsers - they clear
 browser's cookies and history. The difference appears with ``Driver\SahiDriver``:
 
 * ``$session->reset()`` will try to clean all available from browser side
-  cookies. It's very fast and doesn't requires the phisical reload of browser
-  between tests, making them much faster. But it has disadvantage - it clears
+  cookies. It's very fast and doesn't require the physical reload of the browser
+  between tests, making them much faster. But it has a disadvantage - it clears
   only the cookies, available to clean from browser side. And we also have
-  ``http-only`` cookies. In such case, resetting will simply woun't work. Also,
+  ``http-only`` cookies. In such case, resetting simply won't work. Also,
   browsing history will state the same after this call. So, it's very fast, but
   limited in complex cases.
 
-* ``$session->restart()`` will phisically restart the browser. This action will
-  phisically clean **all** your cookies and browsing history by cost of browser
+* ``$session->restart()`` will physically restart the browser. This action will
+  physically clean **all** your cookies and browsing history by cost of browser
   reloading.
 
 Taking all this into account, it would be the best way to use ``reset()`` by
@@ -436,7 +436,7 @@ Sessions Manager
 
 Although ``$session`` object is already usable enough, it's not as easy to
 write multisession (multidriver/multibrowser) code. Yep, you've heard me right,
-with Mink you can manipulate multiple browser emulators simultaneously with
+with Mink you can manipulate multiple browser emulators simultaneously with a
 single consistent API:
 
 .. code-block:: php
@@ -471,10 +471,10 @@ single container object:
 
 .. note::
 
-    Mink will even lasy-start your sessions when needed (on first ``getSession()``
-    call). So, browser will not be started till you really need it!
+    Mink will even lazy-start your sessions when needed (on first ``getSession()``
+    call). So, the browser will not be started till you really need it!
 
-Or you could even ommit the session name in default cases:
+Or you could even omit the session name in default cases:
 
 .. code-block:: php
 
@@ -501,11 +501,11 @@ Traverse the Page - Selectors
 -----------------------------
 
 Now you know how to control the browser itself. But what about traversing the
-current page content? Mink talks with it's drivers with `XPath selectors`_, but
+current page content? Mink talks to its drivers with `XPath selectors`_, but
 you also have access to `named selectors`_ and `css selectors`_. Mink will
 transform such selectors into XPath queries internally for you.
 
-The main class of the Mink's selectors engine is ``Behat\Mink\Selector\SelectorsHandler``.
+The main class of Mink's selectors engine is ``Behat\Mink\Selector\SelectorsHandler``.
 It handles different selector types, which implements ``Behat\Mink\Selector\SelectorInterface``:
 
 .. code-block:: php
@@ -524,7 +524,7 @@ It handles different selector types, which implements ``Behat\Mink\Selector\Sele
 When you initialize ``Selector\SelectorsHandler`` it already has `XPath selectors`_,
 `named selectors`_ and `css selectors`_ registered in it.
 
-You can provide custom selectors handler as a second argument to your session
+You can provide a custom selectors handler as a second argument to your session
 instances:
 
 .. code-block:: php
@@ -565,17 +565,17 @@ Named selectors provide a way to get named XPath queries:
 
 There's whole lot more named selectors for you to use:
 
-* ``link`` - for searching a link by it's href, id, title, img alt or value
-* ``button`` - for searching a button by it's name, id, value, img alt or title
-* ``link_or_button`` - for searching for both links and buttons
+* ``link`` - for searching a link by its href, id, title, img alt or value
+* ``button`` - for searching a button by its name, id, value, img alt or title
+* ``link_or_button`` - for searching for both, links and buttons
 * ``content`` - for sarching a specific page content (text)
-* ``select`` - for searching a select field by it's id, name or label
-* ``checkbox`` - for searching a checkbox by it's id, name, or label
-* ``radio`` - for searching a radio button by it's id, name, or label
-* ``file`` - for searching a file input by it's id, name, or label
-* ``optgroup`` - for searching optgroup by it's label
-* ``option`` - for searching an option by it's content
-* ``table`` - for searching a table by it's id or caption
+* ``select`` - for searching a select field by its id, name or label
+* ``checkbox`` - for searching a checkbox by its id, name, or label
+* ``radio`` - for searching a radio button by its id, name, or label
+* ``file`` - for searching a file input by its id, name, or label
+* ``optgroup`` - for searching optgroup by its label
+* ``option`` - for searching an option by its content
+* ``table`` - for searching a table by its id or caption
 
 CSS Selectors
 ~~~~~~~~~~~~~
@@ -603,7 +603,7 @@ And of course, you can use clean XPath queries:
 
     $xpath = $handler->selectorToXpath('xpath', '//html');
 
-It's like proxy method, which will return the same expression you give to it.
+It's like a proxy method, which will return the same expression you give to it.
 It's used internally in `find* methods`_.
 
 ``find*`` Methods
@@ -621,7 +621,7 @@ available on ``DocumentElement`` object. You can get this object from session:
 This object provides two very useful traversing methods:
 
 * ``find()`` - evaluates specific selector on the page content and returns
-  last matched element or ``null``:
+  the last matched element or ``null``:
 
   .. code-block:: php
 
@@ -631,7 +631,7 @@ This object provides two very useful traversing methods:
     $elementByCss = $page->find('css', 'h3 > a');
 
 * ``findAll()`` - evaluates specific selector on the page content and returns
-  array of matched elements:
+  an array of matched elements:
 
   .. code-block:: php
 
@@ -640,9 +640,9 @@ This object provides two very useful traversing methods:
     );
     $elementsByCss = $page->findAll('css', 'h3 > a');
 
-Also, there's bunch of shortcut methods:
+Also, there's a bunch of shortcut methods:
 
-* ``findById()`` - will search for element by it's ID
+* ``findById()`` - will search for an element by its ID
 * ``findLink()`` - will search for a link with ``link`` named selector
 * ``findButton()`` - will search for a button with ``button`` named selector
 * ``findField()`` - will search for a field with ``field`` named selector
@@ -651,8 +651,8 @@ Nested Traversing
 ~~~~~~~~~~~~~~~~~
 
 Every ``find*()`` method will return ``Behat\Mink\Element\NodeElement`` instance
-and ``findAll()`` will return array of such instances. The fun part is you can
-make same old traversing on such elements too:
+and ``findAll()`` will return an array of such instances. The fun part is you
+can make same old traversing on such elements too:
 
 .. code-block:: php
 
@@ -664,8 +664,9 @@ make same old traversing on such elements too:
 Manipulate the Page - ``NodeElement``
 -------------------------------------
 
-Ok, you've got interesting page element. Now you'll want to do something with
-it. ``Behat\Mink\Element\NodeElement`` provides bunch of useful methods for you:
+Ok, you've got an interesting page element. Now you'll want to do something with
+it. ``Behat\Mink\Element\NodeElement`` provides bunch a of useful methods for
+you:
 
 .. code-block:: php
 
@@ -699,7 +700,7 @@ To retrieve HTML content or plain text from out of the element, you can use:
 Form Field Maniupaltions
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can fill form fields/retrieve it's values with form manipulation actions:
+You can fill form fields/retrieve its values with form manipulation actions:
 
 .. code-block:: php
 
@@ -728,7 +729,7 @@ You can fill form fields/retrieve it's values with form manipulation actions:
 Mouse Manipulations
 ~~~~~~~~~~~~~~~~~~~
 
-You can perform mouse manipulations on element:
+You can perform mouse manipulations on an element:
 
 .. code-block:: php
 
@@ -747,7 +748,7 @@ You can perform mouse manipulations on element:
 Drag'n'Drop
 ~~~~~~~~~~~
 
-Mink even supports drag'n'drop of one fields onto another:
+Mink even supports drag'n'drop of one field onto another:
 
 .. code-block:: php
 
