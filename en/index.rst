@@ -25,6 +25,7 @@ The simplest way to install Mink is through PEAR:
 
 .. code-block:: bash
 
+    $ pear channel-discover pear.symfony.com
     $ pear channel-discover pear.behat.org
     $ pear install behat/mink
 
