@@ -146,6 +146,12 @@ Mink comes with three drivers out of the box:
   only one browser type (Chromium), also it's still slower than Goutte and
   requires node.js and npm to be installed on the system.
 
+.. versionadded:: 1.2
+
+* ``SeleniumDriver`` - provides a bridge for famous `Selenium <http://seleniumhq.org/>`_
+  tool. If you just love Selenium - you can now use it right out of the box
+  in your Behat/Mink test suites.
+
 GoutteDriver
 ~~~~~~~~~~~~
 
@@ -285,6 +291,31 @@ more verbose version with 2 arguments:
 
     ``$script`` defines a node.js script to start zombie.js server. If you pass
     a ``null`` the default script will be used. Use this option carefully!
+
+SeleniumDriver
+~~~~~~~~~~~~~~
+
+.. versionadded:: 1.2
+
+In order to talk with selenium server, you should install and configure it first:
+
+1. Download Selenium Server (formerly the Selenium RC Server) from here:
+   `<http://seleniumhq.org/download/>`_.
+
+2. Run server with command:
+
+   .. code-block:: bash
+
+        $ java -jar selenium-server-standalone-2.11.0.jar
+
+That's it, now you can use ``SeleniumDriver``:
+
+.. code-block:: php
+
+    $client = new \Selenium\Client($host, $port);
+    $driver = new \Behat\Mink\Driver\SeleniumDriver(
+        'firefox', 'base_url', $client
+    );
 
 Control the Browser - Session
 -----------------------------
