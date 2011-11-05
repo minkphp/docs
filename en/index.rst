@@ -124,7 +124,7 @@ browser emulators through its driver - it doesn't know anything about how to
 start/stop or traverse page in that particular browser emulator - it only knows
 what driver method it should call in order to do this.
 
-Mink comes with three drivers out of the box:
+Mink v1.2 comes with four drivers out of the box:
 
 * ``GoutteDriver`` - provides a bridge for `Goutte <https://github.com/fabpot/goutte>`_
   headless browser. Goutte is a classical pure-php headless browser, written by
