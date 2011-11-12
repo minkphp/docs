@@ -370,13 +370,13 @@ browser emulator with it:
 
     // evaluate JS expression:
     echo $session->evaluateScript(
-        '(function(){ return 'something from browser'; })()'
+        "(function(){ return 'something from browser'; })()"
     );
 
     // wait for n milliseconds or
     // till JS expression becomes true:
     $session->wait(5000,
-        '$('.suggestions-results').children().length > 0'
+        "$('.suggestions-results').children().length > 0"
     );
 
 .. note::
