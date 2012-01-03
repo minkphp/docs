@@ -188,8 +188,13 @@ Mink v1.2 comes with four drivers out of the box:
 .. versionadded:: 1.2
 
 * ``SeleniumDriver`` - provides a bridge for famous `Selenium <http://seleniumhq.org/>`_
-  tool. If you just love Selenium - you can now use it right out of the box
+  tool. If you need legacy Selenium - you can use it right out of the box
   in your Behat/Mink test suites.
+
+.. versionadded:: 1.3
+
+* ``Selenium2Driver`` - provides a bridge for `Selenium2 (webdriver) <http://seleniumhq.org/>`_
+  tool. If you just love Selenium2 - you can now use it right out of the box too.
 
 GoutteDriver
 ~~~~~~~~~~~~
@@ -354,6 +359,30 @@ That's it, now you can use ``SeleniumDriver``:
     $client = new \Selenium\Client($host, $port);
     $driver = new \Behat\Mink\Driver\SeleniumDriver(
         'firefox', 'base_url', $client
+    );
+
+Selenium2Driver
+~~~~~~~~~~~~~~~
+
+.. versionadded:: 1.3
+
+In order to talk with selenium server, you should install and configure it first:
+
+1. Download Selenium Server (formerly the Selenium RC Server) from here:
+   `<http://seleniumhq.org/download/>`_.
+
+2. Run server with command:
+
+   .. code-block:: bash
+
+        $ java -jar selenium-server-standalone-2.11.0.jar
+
+That's it, now you can use ``Selenium2Driver``:
+
+.. code-block:: php
+
+    $driver = new \Behat\Mink\Driver\Selenium2Driver(
+        'firefox', 'base_url'
     );
 
 Control the Browser - Session
