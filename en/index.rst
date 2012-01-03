@@ -91,7 +91,13 @@ You can also clone the Mink with Git by running:
 .. code-block:: bash
 
     $ git clone git://github.com/Behat/Mink.git && cd Mink
-    $ git submodule update --init --recursive
+
+Then download ``composer.phar`` and run ``install`` command:
+
+.. code-block:: bash
+
+    $ wget -nc http://getcomposer.org/composer.phar
+    $ php composer.phar install
 
 Now, you can use Mink in your projects simply by including it:
 
