@@ -103,7 +103,7 @@ Now, you can use Mink in your projects simply by including it:
 
 .. code-block:: php
 
-    require_once '/path/to/Mink/autoload.php';
+    require_once '/path/to/Mink/vendor/.composer/autoload.php';
 
 Understanding the Mink
 ----------------------
