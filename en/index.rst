@@ -33,7 +33,10 @@ Create ``composer.json`` file in the project root:
         },
 
         "repositories": {
-            "behat/mink-deps": { "composer": { "url": "behat.org" } }
+            "behat/mink-deps": { 
+                "type": "composer",
+                "url": "behat.org"
+            }
         }
     }
 
