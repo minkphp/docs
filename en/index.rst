@@ -728,7 +728,7 @@ This object provides two very useful traversing methods:
 
   .. code-block:: php
 
-    $fieldElement = $page->find('name',
+    $fieldElement = $page->find('named',
         array('field', 'id|name|value|label')
     );
     $elementByCss = $page->find('css', 'h3 > a');
@@ -738,7 +738,7 @@ This object provides two very useful traversing methods:
 
   .. code-block:: php
 
-    $fieldElements = $page->findAll('name',
+    $fieldElements = $page->findAll('named',
         array('field', 'id|name|value|label')
     );
     $elementsByCss = $page->findAll('css', 'h3 > a');
