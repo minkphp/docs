@@ -50,6 +50,18 @@ Then download ``composer.phar`` and run ``install`` command:
 Everything will be installed inside ``vendor`` folder.
 Finally, include Composer autoloading script to your project:
 
+.. note::
+
+    By default, Mink will be configured with only zombie.js driver. In order to
+    be able to use additional drivers, you should install (through composer) their 
+    dependencies. Add apropriate dependencies to your ``composer.json`` ``require``
+    block:
+
+    - GoutteDriver - ``"fabpot/goutte": "*"``
+    - SeleniumDriver - ``"alexandresalome/php-selenium": "*"``
+    - WebDriver - ``"facebook/php-webdriver": "*"``
+    - SahiDriver - ``"behat/sahi-client": "*"``
+
 .. code-block:: php
 
     require_once 'vendor/.composer/autoload.php';
