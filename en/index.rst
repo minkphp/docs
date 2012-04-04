@@ -85,7 +85,6 @@ Finally, include Composer autoloading script to your project:
                     "url":  "behat.org"
                 }
             }
-
         }
 
 
