@@ -50,6 +50,10 @@ Then download ``composer.phar`` and run ``install`` command:
 Everything will be installed inside ``vendor`` folder.
 Finally, include Composer autoloading script to your project:
 
+.. code-block:: php
+
+    require_once 'vendor/.composer/autoload.php';
+
 .. note::
 
     By default, Mink will be configured with only zombie.js driver. In order to
@@ -62,9 +66,28 @@ Finally, include Composer autoloading script to your project:
     - WebDriver - ``"facebook/php-webdriver": "*"``
     - SahiDriver - ``"behat/sahi-client": "*"``
 
-.. code-block:: php
+    In order to install Mink with all available drivers, use this ``composer.json``:
 
-    require_once 'vendor/.composer/autoload.php';
+    .. code-block:: js
+
+        {
+            "require": {
+                "behat/mink":  "*",
+                "fabpot/goutte": "*",
+                "alexandresalome/php-selenium": "*",
+                "facebook/php-webdriver": "*",
+                "behat/sahi-client": "*"
+            },
+
+            "repositories": {
+                "behat/mink-deps": {
+                    "type": "composer",
+                    "url":  "behat.org"
+                }
+            }
+
+        }
+
 
 Method #2 (PEAR)
 ~~~~~~~~~~~~~~~~
