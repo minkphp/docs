@@ -66,7 +66,8 @@ Finally, include Composer autoloading script to your project:
     - WebDriver - ``"facebook/php-webdriver": "*"``
     - SahiDriver - ``"behat/sahi-client": "*"``
 
-    In order to install Mink with all available drivers, use this ``composer.json``:
+    If you're newcomer or just don't know what to choose - configure all available
+    drivers with this ``composer.json`` (you will be able to tuneup it later):
 
     .. code-block:: js
 
