@@ -104,6 +104,11 @@ html_theme = 'scrolls'
 # documentation.
 #html_theme_options = {}
 
+html_context = {
+    'logo_name':     'mink',
+    'menu_section':  'mink-docs'
+}
+
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
 

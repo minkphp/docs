@@ -58,7 +58,7 @@ Finally, include Composer autoloading script to your project:
 
     By default, Mink will be configured with only zombie.js driver. In order to
     be able to use additional drivers, you should install (through composer) their 
-    dependencies. Add apropriate dependencies to your ``composer.json`` ``require``
+    dependencies. Add appropriate dependencies to your ``composer.json`` ``require``
     block:
 
     - GoutteDriver - ``"fabpot/goutte": "*"``
