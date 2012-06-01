@@ -29,14 +29,7 @@ Create ``composer.json`` file in the project root:
 
     {
         "require": {
-            "behat/mink": ">=1.3.2"
-        },
-
-        "repositories": {
-            "behat/mink-deps": { 
-                "type": "composer",
-                "url": "behat.org"
-            }
+            "behat/mink": "1.4@stable"
         }
     }
 
@@ -44,7 +37,7 @@ Then download ``composer.phar`` and run ``install`` command:
 
 .. code-block:: bash
 
-    $ wget -nc http://getcomposer.org/composer.phar
+    $ curl http://getcomposer.org/installer | php
     $ php composer.phar install
 
 Everything will be installed inside ``vendor`` folder.
@@ -52,19 +45,19 @@ Finally, include Composer autoloading script to your project:
 
 .. code-block:: php
 
-    require_once 'vendor/.composer/autoload.php';
+    require_once 'vendor/autoload.php';
 
 .. note::
 
-    By default, Mink will be configured with only zombie.js driver. In order to
-    be able to use additional drivers, you should install (through composer) their 
-    dependencies. Add appropriate dependencies to your ``composer.json`` ``require``
-    block:
+    By default, Mink will be installed with no drivers. In order to
+    be able to use additional drivers, you should install (through composer) them.
+    Add appropriate dependencies to your ``composer.json`` ``require`` block:
 
-    - GoutteDriver - ``"fabpot/goutte": "*"``
-    - SeleniumDriver - ``"alexandresalome/php-selenium": "*"``
-    - WebDriver - ``"facebook/php-webdriver": "*"``
-    - SahiDriver - ``"behat/sahi-client": "*"``
+    - GoutteDriver - ``"behat/mink-goutte-driver": "*"``
+    - SeleniumDriver - ``"behat/mink-selenium-driver": "*"``
+    - WebDriver - ``"behat/mink-selenium2-driver": "*"``
+    - SahiDriver - ``"behat/mink-sahi-driver": "*"``
+    - ZombieDriver - ``"behat/mink-zombie-driver": "*"``
 
     If you're newcomer or just don't know what to choose - configure all available
     drivers with this ``composer.json`` (you will be able to tuneup it later):
@@ -73,40 +66,17 @@ Finally, include Composer autoloading script to your project:
 
         {
             "require": {
-                "behat/mink":  "*",
-                "fabpot/goutte": "*",
-                "alexandresalome/php-selenium": "*",
-                "facebook/php-webdriver": "*",
-                "behat/sahi-client": "*"
-            },
+                "behat/mink": "*",
 
-            "repositories": {
-                "behat/mink-deps": {
-                    "type": "composer",
-                    "url":  "behat.org"
-                }
+                "behat/mink-goutte-driver": "*",
+                "behat/mink-selenium-driver": "*",
+                "behat/mink-selenium2-driver": "*",
+                "behat/mink-sahi-driver": "*",
+                "behat/mink-zombie-driver": "*"
             }
         }
 
-
-Method #2 (PEAR)
-~~~~~~~~~~~~~~~~
-
-Another way to install Mink is through PEAR:
-
-.. code-block:: bash
-
-    $ pear channel-discover pear.symfony.com
-    $ pear channel-discover pear.behat.org
-    $ pear install behat/mink
-
-Now, you can use Mink in your projects simply by including it:
-
-.. code-block:: php
-
-    require_once 'mink/autoload.php';
-
-Method #3 (PHAR)
+Method #2 (PHAR)
 ~~~~~~~~~~~~~~~~
 
 Also, you can use mink phar package:
@@ -121,7 +91,12 @@ Now you can require phar package in your project:
 
     require_once 'mink.phar';
 
-Method #4 (Git)
+.. note::
+
+    Minks PHAR package comes bundles with all drivers, so there's no need
+    to search or download them manually.
+
+Method #3 (Git)
 ~~~~~~~~~~~~~~~
 
 You can also clone the Mink with Git by running:
@@ -134,14 +109,14 @@ Then download ``composer.phar`` and run ``install`` command:
 
 .. code-block:: bash
 
-    $ wget -nc http://getcomposer.org/composer.phar
+    $ curl http://getcomposer.org/installer | php
     $ php composer.phar install
 
 Now, you can use Mink in your projects simply by including it:
 
 .. code-block:: php
 
-    require_once '/path/to/Mink/vendor/.composer/autoload.php';
+    require_once '/path/to/Mink/vendor/autoload.php';
 
 Understanding the Mink
 ----------------------
