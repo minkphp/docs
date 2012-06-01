@@ -1,0 +1,3 @@
+[submodule "theme"]
+	path = theme
+	url = git://github.com/Behat/Sphinx-theme.git
