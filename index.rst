@@ -3,7 +3,7 @@ Web acceptance testing
 
 One of the most important parts in the web is a browser. Browser is the window,
 through which web users interact with web applications and other users. Users
-are always talks with web applications through browsers.
+are always talking with web applications through browsers.
 
 So, in order to test, that our web application behaves correctly, we need a way
 to simulate this interaction between browser and web application in our tests.
