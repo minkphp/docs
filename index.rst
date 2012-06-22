@@ -883,8 +883,6 @@ and `Symfony2 <http://symfony.com>`_ support out of the box. You can read next
 articles in order to understand how you can use them with Mink:
 
 * :doc:`phpunit`
-* `Developing Web Applications with Behat and Mink <http://docs.behat.org/cookbook/behat_and_mink.html>`_
-* :doc:`bundle/index`
 
 Mink API
 --------
