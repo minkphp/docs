@@ -810,7 +810,7 @@ To retrieve HTML content or plain text from out of the element, you can use:
     including newlines. So it'll basically return the text, that user sees on
     the page.
 
-Form Field Maniupaltions
+Form Field Manipulations
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can fill form fields/retrieve its values with form manipulation actions:
