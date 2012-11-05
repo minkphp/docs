@@ -220,21 +220,20 @@ In order to talk with Goutte, you should instantiate a
     $driver = new \Behat\Mink\Driver\GoutteDriver();
 
 Also, if you want to configure Goutte more precisely, you could do the full
-setup by hands:
+setup by hand:
 
 .. code-block:: php
 
-    $zendOptions   = array();
-    $serverOptions = array();
+    $clientOptions = array();
 
-    $driver = new \Behat\Mink\Driver\GoutteDriver(
-        new \Goutte\Client($zendOptions, $serverOptions)
-    );
+    $client = new \Behat\Mink\Driver\Goutte\Client();
+    $client->setClient(new \Guzzle\Http\Client('', $clientOptions));
+    $driver = new \Behat\Mink\Driver\GoutteDriver($client);
 
 .. tip::
 
-    ``$zendOptions`` is an array of parameters for Zend HTTP client, which
-    Goutte uses internally. You can read about Zend client parameters `here <http://framework.zend.com/manual/en/zend.http.client.html>`_.
+    ``$clientOptions`` is an array of parameters for Guzzle HTTP client, which
+    Goutte uses internally. You can read about Guzzle client parameters `here <http://guzzlephp.org/tour/http.html>`_.
 
 SahiDriver
 ~~~~~~~~~~
