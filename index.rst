@@ -878,10 +878,7 @@ Testing Tools Integration
 -------------------------
 
 Mink comes with `PHPUnit <http://www.phpunit.de>`_, `Behat <http://behat.org>`_
-and `Symfony2 <http://symfony.com>`_ support out of the box. You can read next
-articles in order to understand how you can use them with Mink:
-
-* :doc:`phpunit`
+and `Symfony2 <http://symfony.com>`_ support out of the box.
 
 Mink API
 --------
