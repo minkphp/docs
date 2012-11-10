@@ -183,7 +183,7 @@ Mink v1.2 comes with four drivers out of the box:
   the creator of the Symfony framework - Fabien Potencier.
 
 * ``SahiDriver`` - provides a bridge for `Sahi <http://sahi.co.in/w/>`_ browser
-  controller. Sahi is a new JS browser controller, that fastly replaced old
+  controller. Sahi is a new JS browser controller, that fast replaced old
   Selenium testing suite. It's both, easier to setup and to use than classical
   Selenium. It has a GUI installer for each popular operating system out there
   and is able to control every systems browser through a special bundled proxy
@@ -267,7 +267,7 @@ it with ``Driver\SahiDriver``:
 
 If you want more control during driver initialization, like for example if you
 want to configure the driver to talk with a proxy on another machine - use the
-more verbose version with a second client arugment:
+more verbose version with a second client argument:
 
 .. code-block:: php
 
@@ -282,7 +282,7 @@ more verbose version with a second client arugment:
     ``$sid`` is a Sahi session ID. It's a unique string, used by the driver and
     Sahi proxy in order to be able to talk with each other. You should fill
     this with ``null`` if you want Sahi to start your browser automatically
-    or with some uniqe string if you want to control an already started browser.
+    or with some unique string if you want to control an already started browser.
 
     ``$host`` simply defines the host on which Sahi is started. It's
     ``localhost`` by default.
@@ -443,7 +443,7 @@ browser emulator with it:
     // open another page:
     $session->visit('http://my_project.dev/second_page.php')
 
-    // use history controlls:
+    // use history controls:
     $session->reload();
     $session->back();
     $session->forward();
@@ -470,7 +470,7 @@ browser emulator with it:
 Cookies and Headers management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-With ``Mink\Session`` you can controll your browsers cookies and headers:
+With ``Mink\Session`` you can control your browsers cookies and headers:
 
 .. code-block:: php
 
@@ -680,7 +680,7 @@ There's whole lot more named selectors for you to use:
 * ``link`` - for searching a link by its href, id, title, img alt or value
 * ``button`` - for searching a button by its name, id, value, img alt or title
 * ``link_or_button`` - for searching for both, links and buttons
-* ``content`` - for sarching a specific page content (text)
+* ``content`` - for searching a specific page content (text)
 * ``select`` - for searching a select field by its id, name or label
 * ``checkbox`` - for searching a checkbox by its id, name, or label
 * ``radio`` - for searching a radio button by its id, name, or label
@@ -816,7 +816,7 @@ You can fill form fields/retrieve its values with form manipulation actions:
 
 .. code-block:: php
 
-    // check/unchech checkbox:
+    // check/uncheck checkbox:
     if ($el->isChecked()) {
         $el->uncheck();
     }
