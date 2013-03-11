@@ -50,14 +50,17 @@ Finally, include Composer autoloading script to your project:
 .. note::
 
     By default, Mink will be installed with no drivers. In order to
-    be able to use additional drivers, you should install (through composer) them.
+    be able to use additional drivers, you should install them (through composer).
     Add appropriate dependencies to your ``composer.json`` ``require`` block:
 
     - GoutteDriver - ``"behat/mink-goutte-driver": "*"``
     - SeleniumDriver - ``"behat/mink-selenium-driver": "*"``
+    - Selenium2Driver - ``"behat/mink-selenium2-driver": "*"``
     - WebDriver - ``"behat/mink-selenium2-driver": "*"``
     - SahiDriver - ``"behat/mink-sahi-driver": "*"``
     - ZombieDriver - ``"behat/mink-zombie-driver": "*"``
+    - WUnitDriver - ``"behat/mink-wunit-driver": "*"``
+    - BrowserKitDriver - ``"behat/mink-browserkit-driver": "*"``
 
     If you're newcomer or just don't know what to choose - configure all available
     drivers with this ``composer.json`` (you will be able to tuneup it later):
