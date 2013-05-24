@@ -326,7 +326,9 @@ server setup - the driver will do all that for you automatically:
 
 .. code-block:: php
 
-    $driver = new \Behat\Mink\Driver\ZombieDriver();
+    $driver = new \Behat\Mink\Driver\ZombieDriver(
+        new \Behat\Mink\Driver\NodeJS\Server\ZombieServer()
+    );
 
 If you want more control during driver initialization, like for example if you
 want to configure the driver to init the server on a specific port - use the
