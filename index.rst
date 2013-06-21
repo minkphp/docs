@@ -455,7 +455,7 @@ browser emulator with it:
 
     // evaluate JS expression:
     echo $session->evaluateScript(
-        "(function(){ return 'something from browser'; })()"
+        "return 'something from browser';"
     );
 
     // wait for n milliseconds or
