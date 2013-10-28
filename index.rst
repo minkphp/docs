@@ -446,7 +446,7 @@ browser emulator with it:
     echo $session->getPage()->getContent();
 
     // open another page:
-    $session->visit('http://my_project.dev/second_page.php')
+    $session->visit('http://my_project.dev/second_page.php');
 
     // use history controls:
     $session->reload();
@@ -460,7 +460,8 @@ browser emulator with it:
 
     // wait for n milliseconds or
     // till JS expression becomes true:
-    $session->wait(5000,
+    $session->wait(
+        5000,
         "$('.suggestions-results').children().length > 0"
     );
 
