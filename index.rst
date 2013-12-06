@@ -830,7 +830,7 @@ You can fill form fields/retrieve its values with form manipulation actions:
     $el->check();
 
     // select option in select:
-    $el->selectOption('optin value');
+    $el->selectOption('option value');
 
     // attach file to file input:
     $el->attachFile('/path/to/file');
