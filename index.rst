@@ -236,7 +236,8 @@ setup by hand:
 .. tip::
 
     ``$clientOptions`` is an array of parameters for Guzzle HTTP client, which
-    Goutte uses internally. You can read about Guzzle client parameters `here <http://guzzlephp.org/tour/http.html>`_.
+    Goutte uses internally. You can read about Guzzle client parameters `here
+    <http://docs.guzzlephp.org/en/latest/http-client/client.html#configuration-options>`_.
 
 SahiDriver
 ~~~~~~~~~~
