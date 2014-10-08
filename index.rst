@@ -9,7 +9,7 @@ So, in order to test, that our web application behaves correctly, we need a way
 to simulate this interaction between browser and web application in our tests.
 We need a **Mink**.
 
-Mink is an open source acceptance test framework for web applications, written
+Mink is an open source browser controller/emulator for web applications, written
 in PHP 5.3.
 
 Installation
