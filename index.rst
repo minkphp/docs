@@ -29,7 +29,7 @@ Create ``composer.json`` file in the project root:
 
     {
         "require": {
-            "behat/mink": "1.4@stable"
+            "behat/mink": "1.6.*"
         }
     }
 
@@ -37,7 +37,7 @@ Then download ``composer.phar`` and run ``install`` command:
 
 .. code-block:: bash
 
-    $ curl http://getcomposer.org/installer | php
+    $ curl -sS https://getcomposer.org/installer | php
     $ php composer.phar install
 
 Everything will be installed inside ``vendor`` folder.
@@ -69,7 +69,7 @@ Finally, include Composer autoloading script to your project:
 
         {
             "require": {
-                "behat/mink": "*",
+                "behat/mink": "1.6.*",
 
                 "behat/mink-goutte-driver": "*",
                 "behat/mink-selenium-driver": "*",
