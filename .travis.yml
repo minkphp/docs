@@ -5,4 +5,6 @@ sudo: false
 python:
     - "2.7"
 
+install: pip install Sphinx==1.2.2 sphinx_rtd_theme
+
 script: sphinx-build -nW -b html -d build/doctrees . build/html
