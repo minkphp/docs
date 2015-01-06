@@ -1,0 +1,8 @@
+language: python
+
+sudo: false
+
+python:
+    - "2.7"
+
+script: sphinx-build -nW -b html -d build/doctrees . build/html
