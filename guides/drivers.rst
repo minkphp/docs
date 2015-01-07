@@ -9,12 +9,13 @@ Mink always talks with browser emulators through its driver. It doesn't know
 anything about how to start/stop or traverse page in that particular browser
 emulator. It only knows what driver method it should call in order to do this.
 
-Mink comes with five drivers out of the box:
+Mink comes with six drivers out of the box:
 
 .. toctree::
     :maxdepth: 1
 
     /drivers/goutte
+    /drivers/browserkit
     /drivers/selenium2
     /drivers/zombie
     /drivers/sahi

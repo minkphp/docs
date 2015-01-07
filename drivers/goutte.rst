@@ -5,6 +5,12 @@ GoutteDriver provides a bridge for the `Goutte`_ headless browser. Goutte
 is a classical pure-php headless browser, written by the creator of the Symfony
 framework Fabien Potencier.
 
+.. note::
+
+    The GoutteDriver extends the :doc:`/drivers/browserkit` to fix a small
+    edge case in the Goutte implementation of BrowserKit. It is also able
+    to instantiate the Goutte client automatically.
+
 Installation
 ------------
 
