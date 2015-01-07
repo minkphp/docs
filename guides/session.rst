@@ -64,10 +64,8 @@ browser emulator with it:
 .. note::
 
     Although Mink does its best on removing browser differences between different
-    browser emulators, it can't do much in some cases. For example, GoutteDriver
-    can't evaluate JavaScript and Selenium2Driver can't get the response
-    status code. In such cases, the driver will always throw a meaningful
-    ``Behat\Mink\Exception\UnsupportedDriverActionException``.
+    browser emulators, it can't do much in some cases. See the :ref:`driver-feature-support`
+    to see which features are supported by each driver.
 
 Cookies and Headers management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
