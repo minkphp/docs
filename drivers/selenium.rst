@@ -5,6 +5,15 @@ SeleniumDriver provides a bridge for the famous `Selenium`_ tool. If you
 need legacy Selenium, you can use it right out of the box in your Mink test
 suites.
 
+Installation
+------------
+
+SeleniumDriver is available through Composer:
+
+.. code-block:: bash
+
+    $ composer require behat/mink-selenium-driver
+
 In order to talk with the selenium server, you should install and configure
 it first:
 
@@ -16,6 +25,9 @@ it first:
    .. code-block:: bash
 
         $ java -jar selenium-server-standalone-2.44.0.jar
+
+Usage
+-----
 
 That's it, now you can use SeleniumDriver:
 
