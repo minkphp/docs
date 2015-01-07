@@ -3,18 +3,29 @@ ZombieDriver
 
 ZombieDriver provides a bridge for the `Zombie.js`_ browser emulator. Zombie.js
 is a headless browser emulator, written in node.js. It supports all JS interactions
-that Sahi and Selenium do and works almost as fast as Goutte does.
-It's best of both worlds, actually, but still limited to only one browser
-type (Webkit). Also it's still slower than Goutte and requires node.js and
-npm to be installed on the system.
+that :doc:`Selenium </drivers/selenium2>` and :doc:`Sahi </drivers/sahi>`
+do and works almost as fast as Goutte does. It is the best of both worlds
+actually, but still limited to only one browser type (Webkit). Also it is
+still slower than Goutte and requires node.js and npm to be installed on
+the system.
 
-In order to talk with zombie.js server, you should install and configure
+Installation
+------------
+
+ZombieDriver is available through Composer:
+
+.. code-block:: bash
+
+    $ composer require behat/mink-zombie-driver
+
+In order to talk with a zombie.js server, you need to install and configure
 zombie.js first:
 
 1. Install node.js by following instructions from the official site:
    `<http://nodejs.org/>`_.
 
-2. Install npm (node package manager) by following instructions from `<http://npmjs.org/>`_.
+2. Install npm (node package manager) by following the instructions from
+   `<http://npmjs.org/>`_.
 
 3. Install zombie.js with npm:
 
@@ -30,6 +41,9 @@ The easiest way to do this is to add:
     export NODE_PATH="/PATH/TO/NPM/node_modules"
 
 into your ``.bashrc``.
+
+Usage
+-----
 
 After that, you'll be able to just use ZombieDriver without manual server
 setup. The driver will do all that for you automatically:

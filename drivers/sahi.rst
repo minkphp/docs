@@ -7,6 +7,15 @@ It's both easier to setup and to use than classical Selenium. It has a GUI
 installer for each popular operating system out there and is able to control
 every systems browser through a special bundled proxy server.
 
+Installation
+------------
+
+SahiDriver is available through Composer:
+
+.. code-block:: bash
+
+    $ composer require behat/mink-sahi-driver
+
 In order to talk with a real browser through Sahi, you should install and
 configure Sahi first:
 
@@ -21,6 +30,9 @@ configure Sahi first:
 
         cd $YOUR_PATH_TO_SAHI/bin
         ./sahi.sh
+
+Usage
+-----
 
 After installing Sahi and running the Sahi proxy server, you will be able
 to control it with ``Behat\Mink\Driver\SahiDriver``:
