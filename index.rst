@@ -79,4 +79,4 @@ Mink has integrations for several testing tools:
 .. _Behat MinkExtension: https://github.com/Behat/MinkExtension
 .. _Composer: https://getcomposer.org
 .. _PHPUnit: http://www.phpunit.de
-.. _phpunit-mink package: https://github.com/aik099/phpunit-mink
+.. _phpunit-mink package: https://github.com/minkphp/phpunit-mink
