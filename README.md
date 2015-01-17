@@ -9,7 +9,7 @@ Contribute
 Contributions to the documentation are always welcome!
 
 * Report any bugs or issues you find on the [issue tracker](https://github.com/minkphp/docs/issues).
-* You can grab the source code at Puli’s [Git repository](https://github.com/minkphp/docs).
+* You can grab the source code at Pull’s [Git repository](https://github.com/minkphp/docs).
 
 License
 -------
