@@ -10,7 +10,7 @@ with it before starting it.
 
 .. code-block:: php
 
-    // choose a Mink driver. More about it in later chapters
+    // Choose a Mink driver. More about it in later chapters.
     $driver = new \Behat\Mink\Driver\GoutteDriver();
 
     $session = new \Behat\Mink\Session($driver);
@@ -20,12 +20,11 @@ with it before starting it.
 
 .. note::
 
-    The first argument to the session constructor is a driver object, which
-    is how the Mink abstraction layer works. You will discover more about
-    the available drivers in a :doc:`later chapter </guides/drivers>`.
+    The first argument to the session constructor is a driver object. Drivers
+    are the way the Mink abstraction layer works. You will discover more
+    about the available drivers in a :doc:`later chapter </guides/drivers>`.
 
-
-.. note::
+.. caution::
 
     Although Mink does its best on removing browser differences between different
     browser emulators, it can't do much in some cases. See the :ref:`driver-feature-support`
@@ -34,9 +33,10 @@ with it before starting it.
 Basic Browser Interaction
 -------------------------
 
-The first thing to do to use your session is to open a page with it. Just
-after starting, the session is not on any page (in a real browser, you would
-on ``about:blank``), and calling any other action is likely to fail.
+The first thing to do when using your session is to open a page with it.
+Just after starting, the session is not on any page (in a real browser, you
+would on the ``about:blank`` page), and calling any other action is likely
+to fail.
 
 .. code-block:: php
 
@@ -45,17 +45,19 @@ on ``about:blank``), and calling any other action is likely to fail.
 .. note::
 
     Mink is primarily designed to be used for testing websites. To allow
-    covering error pages as well, ``Session::visit`` does not consider that
-    error status codes are invalid. It will not throw an exception in this
-    case. You will need to check whether the response was a success or an
-    error. It will only throw an exception when Mink cannot load the page
-    (network error, ...).
+    covering error pages as well, the ``Session::visit`` method does not
+    consider error status codes as invalid. It will not throw an exception
+    in this case. You will need to check whether the response was a success
+    or an error. It will only throw an exception when Mink cannot load the
+    page (network error, ...). For cases, when driver does not support status
+    code retrieval, it might be possible to assert text on the page itself
+    to determine whether it is an error page or no.
 
 Interacting with the Page
 -------------------------
 
 The session gives you access to the page through the ``Session::getPage``
-method. This allows you to :doc:`traverse it </guides/traversing-pages>` and
+method. This allows you to :doc:`traverse </guides/traversing-pages>` and
 :doc:`manipulate it </guides/manipulating-pages>`. The next chapters are
 covering the page API in depth.
 
@@ -92,8 +94,8 @@ The session can manipulate cookies available in the browser.
 
 .. note::
 
-    In browser controllers, the access to http-only cookies may be restricted
-    as they cannot be accessed in Javascript.
+    In browser controllers, you may be be restricted to controlling only
+    http-only cookies because others cannot be accessed through JavaScript.
 
 Status Code Retrieval
 ---------------------
@@ -126,7 +128,7 @@ The session lets you manipulate request headers and access response headers:
 HTTP Authentication
 -------------------
 
-The Mink session has a special method to perform HTTP Basic authentication:
+The session has a special method to perform HTTP Basic authentication:
 
 .. code-block:: php
 
@@ -152,7 +154,7 @@ The session allows you to execute or evaluate Javascript.
 .. code-block:: php
 
     // Execute JS
-    $session->evaluateScript('document.body.firstChild.innerHtml = "";');
+    $session->executeScript('document.body.firstChild.innerHtml = "";');
 
     // evaluate JS expression:
     echo $session->evaluateScript(
@@ -165,13 +167,13 @@ The session allows you to execute or evaluate Javascript.
     returns the result of the expression. When you don't need to get a return
     value, using ``Session::executeScript`` is better.
 
-You can also wait until a give JS expression returns a truthy value or the
+You can also wait until a given JS expression returns a truthy value or the
 timeout is reached:
 
 .. code-block:: php
 
     // wait for n milliseconds or
-    // till JS expression becomes true:
+    // till JS expression becomes truthy:
     $session->wait(
         5000,
         "$('.suggestions-results').children().length"
@@ -179,8 +181,8 @@ timeout is reached:
 
 .. note::
 
-    The ``Session::wait`` method returns the result of the evaluation. It
-    will return ``null`` when the timeout is reached.
+    The ``Session::wait`` method returns ``true`` when the evaluation becomes
+    truthy. It will return ``false`` when the timeout is reached.
 
 Resetting the Session
 ---------------------
@@ -189,7 +191,7 @@ The primary aim for Mink is to provide a single consistent web browsing API
 for acceptance tests. But a very important part in testing is isolation.
 
 Mink provides two very useful methods to isolate tests, to be used in your
-``teardown`` methods:
+test ``teardown`` methods:
 
 .. code-block:: php
 
@@ -210,8 +212,7 @@ The drawback of closing the browser and starting it again is that it takes
 time. In many cases, a lower level of isolation is enough in favor of a faster
 resetting. The ``Session::reset`` method covers this use case. It will try
 to clear the cookies and reset the request headers and the browser history
-in the limit of the driver possibilities.
+to the limit of the driver possibilities.
 
 Taking all this into account, it is recommended to use ``Session::reset()``
-by default and to call ``Session::stop()`` in cases when we need really full
-isolation.
+by default and to call ``Session::stop()`` when you need really full isolation.
