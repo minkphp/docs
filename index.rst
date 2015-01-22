@@ -66,6 +66,7 @@ Learn Mink with the topical guides:
     guides/manipulating-pages
     guides/drivers
     guides/managing-sessions
+    contributing
 
 Testing Tools Integration
 -------------------------
