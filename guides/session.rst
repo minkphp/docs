@@ -44,12 +44,9 @@ on the ``about:blank`` page), and calling any other action is likely to fail.
 
     Mink is primarily designed to be used for testing websites. To allow
     you to browse and test error pages, the ``Session::visit`` method does
-    not consider error status codes as invalid. It will not throw an exception
-    in this case. You will need to check whether the response was a success
-    or an error. It will only throw an exception when Mink cannot load the
-    page (network error, ...). For cases, when driver does not support status
-    code retrieval, it might be possible to assert text on the page itself
-    to determine whether it is an error page or no.
+    not consider error status codes as invalid. It will *not* throw an exception
+    in this case. You will need to check the status code (or certain text
+    on the page) to know if the response was successful or not.
 
 Interacting with the Page
 -------------------------
