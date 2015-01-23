@@ -2,11 +2,10 @@ Controlling the Browser
 =======================
 
 In Mink, the entry point to the browser is called the session. Think about
-it as being your browser window (some drivers even allow to deal with switching
-tabs).
+it as being your browser window (some drivers even let you switch tabs!).
 
-The first thing to do with your session is to start it. Nothing can be done
-with it before starting it.
+First, start your session (it's like opening your browser tab). Nothing can
+be done with it before starting it.
 
 .. code-block:: php
 
@@ -26,17 +25,16 @@ with it before starting it.
 
 .. caution::
 
-    Although Mink does its best on removing browser differences between different
-    browser emulators, it can't do much in some cases. See the :ref:`driver-feature-support`
+    Although Mink does its best to remove differences between the different
+    drivers, each driver has unique features and shortcomings. See the :ref:`driver-feature-support`
     to see which features are supported by each driver.
 
 Basic Browser Interaction
 -------------------------
 
-The first thing to do when using your session is to open a page with it.
-Just after starting, the session is not on any page (in a real browser, you
-would on the ``about:blank`` page), and calling any other action is likely
-to fail.
+Now that your session is started, you'll want to open a page with it. Just
+after starting, the session is not on any page (in a real browser, you would
+on the ``about:blank`` page), and calling any other action is likely to fail.
 
 .. code-block:: php
 
@@ -45,8 +43,8 @@ to fail.
 .. note::
 
     Mink is primarily designed to be used for testing websites. To allow
-    covering error pages as well, the ``Session::visit`` method does not
-    consider error status codes as invalid. It will not throw an exception
+    you to browse and test error pages, the ``Session::visit`` method does
+    not consider error status codes as invalid. It will not throw an exception
     in this case. You will need to check whether the response was a success
     or an error. It will only throw an exception when Mink cannot load the
     page (network error, ...). For cases, when driver does not support status
@@ -58,8 +56,9 @@ Interacting with the Page
 
 The session gives you access to the page through the ``Session::getPage``
 method. This allows you to :doc:`traverse </guides/traversing-pages>` and
-:doc:`manipulate it </guides/manipulating-pages>`. The next chapters are
-covering the page API in depth.
+:doc:`manipulate it </guides/manipulating-pages>`. The next chapters cover
+the page API in depth. Most of what you'll do with Mink will use this object,
+but you can continue reading to learn more about the Session.
 
 Using the Browser History
 -------------------------
@@ -76,8 +75,8 @@ The session gives you access to the browser history:
     $session->back();
     $session->forward();
 
-Cookies Management
-------------------
+Cookie Management
+-----------------
 
 The session can manipulate cookies available in the browser.
 
@@ -94,8 +93,9 @@ The session can manipulate cookies available in the browser.
 
 .. note::
 
-    In browser controllers, you may be be restricted to controlling only
-    http-only cookies because others cannot be accessed through JavaScript.
+    With drivers that use a browser - like Selenium2 - you may be restricted
+    to accessing/setting only `HttpOnly cookies`_ because others cannot be
+    accessed through JavaScript.
 
 Status Code Retrieval
 ---------------------
@@ -122,8 +122,8 @@ The session lets you manipulate request headers and access response headers:
 
 .. note::
 
-    Headers handling is only supported in headless drivers, because there
-    is no way browser controllers can get such information out of the browser.
+    Headers handling is only supported in headless drivers (e.g. Goutte).
+    Browser controllers (e.g. Selenium2) cannot access that information.
 
 HTTP Authentication
 -------------------
@@ -190,8 +190,8 @@ Resetting the Session
 The primary aim for Mink is to provide a single consistent web browsing API
 for acceptance tests. But a very important part in testing is isolation.
 
-Mink provides two very useful methods to isolate tests, to be used in your
-test ``teardown`` methods:
+Mink provides two very useful methods to isolate tests, which can be used
+in your test's ``teardown`` methods:
 
 .. code-block:: php
 
@@ -204,9 +204,9 @@ test ``teardown`` methods:
     $session->restart();
 
 Stopping the session is the best way to reset the session to its initial
-state. It will close the browser entirely. Using the session again requires
-starting the session before any other action. The ``Session::restart`` shortcut
-allows to do these 2 steps in a single actions.
+state. It will close the browser entirely. To use the session again, you
+need to start the session before any other action. The ``Session::restart``
+shortcut allows you to do these 2 steps in a single call.
 
 The drawback of closing the browser and starting it again is that it takes
 time. In many cases, a lower level of isolation is enough in favor of a faster
@@ -216,3 +216,5 @@ to the limit of the driver possibilities.
 
 Taking all this into account, it is recommended to use ``Session::reset()``
 by default and to call ``Session::stop()`` when you need really full isolation.
+
+.. _HttpOnly cookies: http://en.wikipedia.org/wiki/HTTP_cookie#HttpOnly_cookie
