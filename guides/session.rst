@@ -1,84 +1,83 @@
 Controlling the Browser
 =======================
 
-Ok. Now we know how to create the browser driver to talk with a specific
-browser emulator. Although we can use drivers directly to call some actions
-on the emulator, Mink provides a better way - ``Session``:
+In Mink, the entry point to the browser is called the session. Think about
+it as being your browser window (some drivers even let you switch tabs!).
+
+First, start your session (it's like opening your browser tab). Nothing can
+be done with it before starting it.
 
 .. code-block:: php
 
-    // init session:
+    // Choose a Mink driver. More about it in later chapters.
+    $driver = new \Behat\Mink\Driver\GoutteDriver();
+
     $session = new \Behat\Mink\Session($driver);
 
-    // start session:
+    // start the session
     $session->start();
 
 .. note::
 
-  As you can see, the first argument to the session (``$driver``) is just
-  a simple driver instance, which we created in the previous chapter.
+    The first argument to the session constructor is a driver object. Drivers
+    are the way the Mink abstraction layer works. You will discover more
+    about the available drivers in a :doc:`later chapter </guides/drivers>`.
 
-``start()`` call is required in order to configure the browser emulator or
-controller to be fully functional.
+.. caution::
+
+    Although Mink does its best to remove differences between the different
+    drivers, each driver has unique features and shortcomings. See the :ref:`driver-feature-support`
+    to see which features are supported by each driver.
 
 Basic Browser Interaction
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
-After you've instantiated the ``$session`` object, you can control the actual
-browser emulator with it:
+Now that your session is started, you'll want to open a page with it. Just
+after starting, the session is not on any page (in a real browser, you would
+on the ``about:blank`` page), and calling any other action is likely to fail.
 
 .. code-block:: php
 
-    // open some page in browser:
     $session->visit('http://my_project.dev/some_page.php');
+
+.. note::
+
+    Mink is primarily designed to be used for testing websites. To allow
+    you to browse and test error pages, the ``Session::visit`` method does
+    not consider error status codes as invalid. It will *not* throw an exception
+    in this case. You will need to check the status code (or certain text
+    on the page) to know if the response was successful or not.
+
+Interacting with the Page
+-------------------------
+
+The session gives you access to the page through the ``Session::getPage``
+method. This allows you to :doc:`traverse </guides/traversing-pages>` and
+:doc:`manipulate </guides/manipulating-pages>` it. The next chapters cover
+the page API in depth. Most of what you'll do with Mink will use this object,
+but you can continue reading to learn more about the Session.
+
+Using the Browser History
+-------------------------
+
+The session gives you access to the browser history:
+
+.. code-block:: php
 
     // get the current page URL:
     echo $session->getCurrentUrl();
-
-    // get the response status code:
-    echo $session->getStatusCode();
-
-    // get page content:
-    echo $session->getPage()->getContent();
-
-    // open another page:
-    $session->visit('http://my_project.dev/second_page.php');
 
     // use history controls:
     $session->reload();
     $session->back();
     $session->forward();
 
-    // evaluate JS expression:
-    echo $session->evaluateScript(
-        "return 'something from browser';"
-    );
+Cookie Management
+-----------------
 
-    // wait for n milliseconds or
-    // till JS expression becomes true:
-    $session->wait(
-        5000,
-        "$('.suggestions-results').children().length > 0"
-    );
-
-.. note::
-
-    Although Mink does its best on removing browser differences between different
-    browser emulators, it can't do much in some cases. See the :ref:`driver-feature-support`
-    to see which features are supported by each driver.
-
-Cookies and Headers management
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-With ``Behat\Mink\Session`` you can control your browsers cookies and headers:
+The session can manipulate cookies available in the browser.
 
 .. code-block:: php
-
-    // setting browser language:
-    $session->setRequestHeader('Accept-Language', 'fr');
-
-    // retrieving response headers:
-    print_r($session->getResponseHeaders());
 
     // set cookie:
     $session->setCookie('cookie name', 'value');
@@ -91,17 +90,50 @@ With ``Behat\Mink\Session`` you can control your browsers cookies and headers:
 
 .. note::
 
-    Headers handling is only supported in headless drivers, because there
-    is no way browser controllers can get such information out of the browser.
+    With drivers that use JavaScript to control the browser - like Sahi -
+    you may be restricted to accessing/setting all, but `HttpOnly cookies`_ .
+
+Status Code Retrieval
+---------------------
+
+The session lets you retrieve the HTTP status code of the response:
+
+.. code-block:: php
+
+    echo $session->getStatusCode();
+
+Headers Management
+------------------
+
+The session lets you manipulate request headers and access response headers:
+
+.. code-block:: php
+
+    // setting browser language:
+    $session->setRequestHeader('Accept-Language', 'fr');
+
+    // retrieving response headers:
+    print_r($session->getResponseHeaders());
+
+.. note::
+
+    Headers handling is only supported in headless drivers (e.g. Goutte).
+    Browser controllers (e.g. Selenium2) cannot access that information.
 
 HTTP Authentication
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
-Also, Mink session has a special method to perform HTTP Basic authentication:
+The session has a special method to perform HTTP Basic authentication:
 
 .. code-block:: php
 
     $session->setBasicAuth($user, $password);
+
+The method can also be used to reset a previous authentication:
+
+.. code-block:: php
+
+    $session->setBasicAuth(false);
 
 .. note::
 
@@ -109,13 +141,52 @@ Also, Mink session has a special method to perform HTTP Basic authentication:
     Because HTTP authentication in browser requires manual user action, that
     can't be done remotely for browser controllers.
 
+Javascript Evaluation
+---------------------
+
+The session allows you to execute or evaluate Javascript.
+
+.. code-block:: php
+
+    // Execute JS
+    $session->executeScript('document.body.firstChild.innerHTML = "";');
+
+    // evaluate JS expression:
+    echo $session->evaluateScript(
+        "return 'something from browser';"
+    );
+
+.. note::
+
+    The difference between these methods is that ``Session::evaluateScript``
+    returns the result of the expression. When you don't need to get a return
+    value, using ``Session::executeScript`` is better.
+
+You can also wait until a given JS expression returns a truthy value or the
+timeout is reached:
+
+.. code-block:: php
+
+    // wait for n milliseconds or
+    // till JS expression becomes truthy:
+    $session->wait(
+        5000,
+        "$('.suggestions-results').children().length"
+    );
+
+.. note::
+
+    The ``Session::wait`` method returns ``true`` when the evaluation becomes
+    truthy. It will return ``false`` when the timeout is reached.
+
 Resetting the Session
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 The primary aim for Mink is to provide a single consistent web browsing API
-for acceptance tests. But most important part in testing is isolation. We
-need a way to isolate our tests from each other. And Mink provides two very
-useful methods for you to use in your ``teardown()`` methods:
+for acceptance tests. But a very important part in testing is isolation.
+
+Mink provides two very useful methods to isolate tests, which can be used
+in your test's ``teardown`` methods:
 
 .. code-block:: php
 
@@ -123,22 +194,22 @@ useful methods for you to use in your ``teardown()`` methods:
     $session->reset();
 
     // hard-reset:
+    $session->stop();
+    // or if you want to start again at the same time
     $session->restart();
 
-Both methods do exactly the same job for headless browsers, they clear browser's
-cookies and history. The difference appears with browser controllers:
+Stopping the session is the best way to reset the session to its initial
+state. It will close the browser entirely. To use the session again, you
+need to start the session before any other action. The ``Session::restart``
+shortcut allows you to do these 2 steps in a single call.
 
-* ``$session->reset()`` will try to clean all available from browser side
-  cookies. It's very fast and doesn't require the physical reload of the
-  browser between tests, making them much faster. But it has a disadvantage:
-  it clears only the cookies available browser-side. And we also have ``http-only``
-  cookies. In such case, resetting simply won't work. Also, browsing history
-  will state the same after this call. So, it's very fast, but limited in
-  complex cases.
+The drawback of closing the browser and starting it again is that it takes
+time. In many cases, a lower level of isolation is enough in favor of a faster
+resetting. The ``Session::reset`` method covers this use case. It will try
+to clear the cookies and reset the request headers and the browser history
+to the limit of the driver possibilities.
 
-* ``$session->restart()`` will physically restart the browser. This action
-  will physically clean **all** your cookies and browsing history by cost
-  of browser reloading.
+Taking all this into account, it is recommended to use ``Session::reset()``
+by default and to call ``Session::stop()`` when you need really full isolation.
 
-Taking all this into account, it would be the best way to use ``reset()``
-by default and to call ``restart()`` in cases when we need really full isolation.
+.. _HttpOnly cookies: http://en.wikipedia.org/wiki/HTTP_cookie#HttpOnly_cookie
