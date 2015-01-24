@@ -53,7 +53,7 @@ Interacting with the Page
 
 The session gives you access to the page through the ``Session::getPage``
 method. This allows you to :doc:`traverse </guides/traversing-pages>` and
-:doc:`manipulate it </guides/manipulating-pages>`. The next chapters cover
+:doc:`manipulate </guides/manipulating-pages>` it. The next chapters cover
 the page API in depth. Most of what you'll do with Mink will use this object,
 but you can continue reading to learn more about the Session.
 
@@ -90,18 +90,16 @@ The session can manipulate cookies available in the browser.
 
 .. note::
 
-    With drivers that use a browser - like Selenium2 - you may be restricted
-    to accessing/setting only `HttpOnly cookies`_ because others cannot be
-    accessed through JavaScript.
+    With drivers that use JavaScript to control the browser - like Sahi -
+    you may be restricted to accessing/setting all, but `HttpOnly cookies`_ .
 
 Status Code Retrieval
 ---------------------
 
-The session lets you retrieve the status code of the response:
+The session lets you retrieve the HTTP status code of the response:
 
 .. code-block:: php
 
-    // get the response status code:
     echo $session->getStatusCode();
 
 Headers Management
@@ -151,7 +149,7 @@ The session allows you to execute or evaluate Javascript.
 .. code-block:: php
 
     // Execute JS
-    $session->executeScript('document.body.firstChild.innerHtml = "";');
+    $session->executeScript('document.body.firstChild.innerHTML = "";');
 
     // evaluate JS expression:
     echo $session->evaluateScript(
