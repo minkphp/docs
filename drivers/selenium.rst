@@ -5,6 +5,13 @@ SeleniumDriver provides a bridge for the famous `Selenium`_ tool. If you
 need legacy Selenium, you can use it right out of the box in your Mink test
 suites.
 
+.. caution::
+
+    The SeleniumRC protocol used by this driver is deprecated and does not
+    support all Mink features. For this reason, the SeleniumDriver is deprecated
+    in favor of the :doc:`/drivers/selenium2`, which is based on the new
+    protocol and is more powerful.
+
 Installation
 ------------
 
