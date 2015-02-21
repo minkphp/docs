@@ -37,7 +37,7 @@ inside the current element while ``ElementInterface::find`` returns the first
 match or ``null`` when there is none.
 
 The ``TraversableElement`` class also provides a bunch of shortcut methods
-on top of ``find()`` to make it easier to achieve many common use case:
+on top of ``find()`` to make it easier to achieve many common use cases:
 
 ``ElementInterface::has``
     Checks whether a child element matches the given selector but without
@@ -68,7 +68,7 @@ Nested Traversing
 
 Every ``find*()`` method will return a ``Behat\Mink\Element\NodeElement`` instance
 and ``findAll()`` will return an array of such instances. The fun part is
-you can make same old traversing on such elements too:
+that you can make same old traversing on such elements as well:
 
 .. code-block:: php
 
@@ -92,18 +92,20 @@ support several kinds of selectors to find elements.
 CSS Selector
 ~~~~~~~~~~~~
 
-The ``css`` selector type lets you use CSS expressions to search elements
-in the page:
+The ``css`` selector type lets you use CSS expressions to search for elements
+on the page:
 
 .. code-block:: php
 
     $title = $page->find('css', 'h1');
 
+    $buttonIcon = $page->find('css', '.btn > .icon');
+
 XPath Selector
 ~~~~~~~~~~~~~~
 
-The ``xpath`` selector type lets you use XPath queries to search elements
-in the page:
+The ``xpath`` selector type lets you use XPath queries to search for elements
+on the page:
 
 .. code-block:: php
 
@@ -111,17 +113,17 @@ in the page:
 
 .. caution::
 
-    This selector searches an element inside the current node (which is ``<html>``
-    for the page object). This means that trying to pass it the XPath of
-    and element retrieved with ``ElementInterface::getXpath`` will not work
-    (this query includes the query for the root node). To check whether an
-    element object still exists in the browser page, use ``ElementInterface::isValid``
+    This selector searches for an element inside the current node (which
+    is ``<html>`` for the page object). This means that trying to pass it
+    the XPath of and element retrieved with ``ElementInterface::getXpath``
+    will not work (this query includes the query for the root node). To check
+    whether an element object still exists on the browser page, use ``ElementInterface::isValid``
     instead.
 
 .. _named-selector:
 
-Named Selector
-~~~~~~~~~~~~~~
+Named Selectors
+~~~~~~~~~~~~~~~
 
 Named selectors provide a set of reusable queries for common needs. For conditions
 based on the content of elements, the named selector will try to find an
@@ -148,40 +150,40 @@ search with this query:
 The following queries are supported by the named selector:
 
 ``id``
-    Searches an element by its id.
+    Searches for an element by its id.
 ``id_or_name``
-    Searches an element by its id or name.
+    Searches for an element by its id or name.
 ``link``
-    Searches a link by its id, title, img alt, rel or text.
+    Searches for a link by its id, title, img alt, rel or text.
 ``button``
-    Searches a button by its name, id, text, img alt or title.
+    Searches for a button by its name, id, text, img alt or title.
 ``link_or_button``
     Searches for both links and buttons.
 ``content``
-    Searches a specific page content (text).
+    Searches for a specific page content (text).
 ``field``
-    Searches a form field by its id, name, label or placeholder.
+    Searches for a form field by its id, name, label or placeholder.
 ``select``
-    Searches a select field by its id, name or label.
+    Searches for a select field by its id, name or label.
 ``checkbox``
-    Searches a checkbox by its id, name, or label.
+    Searches for a checkbox by its id, name, or label.
 ``radio``
-    Searches a radio button by its id, name, or label.
+    Searches for a radio button by its id, name, or label.
 ``file``
-    Searches a file input by its id, name, or label.
+    Searches for a file input by its id, name, or label.
 ``optgroup``
-    Searches an optgroup by its label.
+    Searches for an optgroup by its label.
 ``option``
-    Searches an option by its content or value.
+    Searches for an option by its content or value.
 ``fieldset``
-    Searches a fieldset by its id or legend.
+    Searches for a fieldset by its id or legend.
 ``table``
-    Searches a table by its id or caption.
+    Searches for a table by its id or caption.
 
 Custom Selector
 ~~~~~~~~~~~~~~~
 
-Mink lets you register your own selector types by implement the ``Behat\Mink\Selector\SelectorInterface``.
+Mink lets you register your own selector types through implementing the ``Behat\Mink\Selector\SelectorInterface``.
 It should then be registered in the ``SelectorsHandler`` which is the registry
 of available selectors.
 
