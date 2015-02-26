@@ -183,10 +183,16 @@ Resetting the Session
 ---------------------
 
 The primary aim for Mink is to provide a single consistent web browsing API
-for acceptance tests. But a very important part in testing is isolation.
+for acceptance tests. But a very important part in testing is isolation.  
+Mink tries to automatically "soft" isolate Scenarios from each other without
+slowing-down test runs with a full driver restart, but in some cases this is not 
+possible:
+  * Selenium will not allow cookies to be cleared from anything other than 
+    the current domain - so a scenario that runs across different domains (for 
+    example PayPal's sandbox) cannot be automatically isolated.
 
-Mink provides two very useful methods to isolate tests, which can be used
-in your test's ``teardown`` methods:
+So Mink provides two very useful methods to isolate tests, which can be used
+in your tests' ``teardown`` methods:
 
 .. code-block:: php
 
