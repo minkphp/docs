@@ -210,7 +210,7 @@ will try to clear the cookies, reset the request headers and clear the
 browser history - though there are some driver limitations that mean this 
 isn't always effective.  For example:
 
- * Selenium will not allow cookies to be cleared from anything other than 
+* Selenium will not allow cookies to be cleared from anything other than 
   the current domain.  So a test that runs across different domains (for 
   example your site and PayPal's sandbox) cannot be properly isolated using 
   ``Session::reset()``.
