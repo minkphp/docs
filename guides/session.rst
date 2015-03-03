@@ -187,6 +187,7 @@ for acceptance tests. But a very important part in testing is isolation.
 Mink tries to automatically "soft" isolate tests from each other without
 slowing-down test runs with a full driver restart, but in some cases this is not 
 possible:
+
 * Selenium will not allow cookies to be cleared from anything other than 
   the current domain - so a test that runs across different domains (for 
   example PayPal's sandbox) cannot be automatically isolated.
