@@ -1,164 +1,202 @@
 Traversing Pages
 ================
 
-Now you know how to control the browser itself. But what about traversing
-the current page content? Mink talks to its drivers with `XPath selectors`_,
-but you also have access to `named selectors`_ and `css selectors`_. Mink
-will transform such selectors into XPath queries internally for you.
+Most usages of Mink will involve working with the page opened in your browser.
+This is done thanks to the powerful Element API. This API allows to traverse
+the page (similar to the DOM in Javascript) and to interact with it, which
+will be covered in the :doc:`next chapter </guides/manipulating-pages>`.
 
-The main class of Mink's selectors engine is ``Behat\Mink\Selector\SelectorsHandler``.
-It handles different selector types, which implements ``Behat\Mink\Selector\SelectorInterface``:
+DocumentElement and NodeElement
+-------------------------------
 
-.. code-block:: php
+The Element API consists of 2 main classes. The ``DocumentElement`` instance
+represents the page being displayed in the browser, while the ``NodeElement``
+class is used to represent any element inside the page. Both class are sharing
+a common set of methods to traverse the page (defined in ``TraversableElement``).
 
-    $cssSelector = new \Behat\Mink\Selector\CssSelector();
-
-    // generate XPath query out of CSS:
-    echo $cssSelector->translateToXPath('h1 > a');
-
-    $handler = new \Behat\Mink\Selector\SelectorsHandler();
-    $handler->registerSelector('css', $cssSelector);
-
-    // generate XPath query out of CSS:
-    echo $handler->selectorToXpath('css', 'h1 > a');
-
-When you initialize ``Selector\SelectorsHandler`` it already has `XPath selectors`_,
-`named selectors`_ and `css selectors`_ registered in it.
-
-You can provide a custom selectors handler as a second argument to your session
-instances:
-
-.. code-block:: php
-
-    $session = new \Behat\Mink\Session($driver,
-        new \Behat\Mink\Selector\SelectorsHandler()
-    );
-
-Mink will use this handler internally in `find* methods`_.
-
-Named Selectors
-~~~~~~~~~~~~~~~
-
-Named selectors provide a way to get named XPath queries:
-
-.. code-block:: php
-
-    $selector = new \Behat\Mink\Selector\NamedSelector();
-    $handler  = new \Behat\Mink\Selector\SelectorsHandler(array(
-        'named' => $selector
-    ));
-
-    // XPath query to find the fieldset:
-    $xpath1 = $selector->translateToXPath(
-        array('fieldset', 'id|legend')
-    );
-    $xpath1 = $handler->selectorToXpath('named',
-        array('fieldset', 'id|legend')
-    );
-
-    // XPath query to find the field:
-    $xpath2 = $selector->translateToXPath(
-        array('field', 'id|name|value|label')
-    );
-    $xpath2 = $handler->selectorToXpath('named',
-        array('field', 'id|name|value|label')
-    );
-
-There's whole lot more named selectors for you to use:
-
-* ``link`` - for searching a link by its href, id, title, img alt or value
-* ``button`` - for searching a button by its name, id, value, img alt or
-  title
-* ``link_or_button`` - for searching for both, links and buttons
-* ``content`` - for searching a specific page content (text)
-* ``select`` - for searching a select field by its id, name or label
-* ``checkbox`` - for searching a checkbox by its id, name, or label
-* ``radio`` - for searching a radio button by its id, name, or label
-* ``file`` - for searching a file input by its id, name, or label
-* ``optgroup`` - for searching optgroup by its label
-* ``option`` - for searching an option by its content
-* ``table`` - for searching a table by its id or caption
-
-CSS Selectors
-~~~~~~~~~~~~~
-
-With ``Selector\CssSelector``, you can use CSS expressions to search page
-elements:
-
-.. code-block:: php
-
-    $selector = new \Behat\Mink\Selector\CssSelector();
-    $handler  = new \Behat\Mink\Selector\SelectorsHandler(array(
-        'css' => $selector
-    ));
-
-    // XPath query to find the link by ID:
-    $xpath1 = $selector->translateToXPath('a#ID');
-    $xpath1 = $handler->selectorToXpath('css', 'a#ID');
-
-XPath Selectors
-~~~~~~~~~~~~~~~
-
-And of course, you can use clean XPath queries:
-
-.. code-block:: php
-
-    $xpath = $handler->selectorToXpath('xpath', '//html');
-
-It's like a proxy method, which will return the same expression you give
-to it. It's used internally in `find* methods`_.
-
-``find*`` Methods
-~~~~~~~~~~~~~~~~~
-
-So, now we know how to generate XPath queries for specific elements search.
-But how we actually make this search? The answer is ``find*`` methods,
-available on ``DocumentElement`` object. You can get this object from session:
+The ``DocumentElement`` instance is accessible through the ``Session::getPage`` method:
 
 .. code-block:: php
 
     $page = $session->getPage();
-    $page = $mink->getSession('sahi')->getPage();
 
-This object provides two very useful traversing methods:
+    // You can now manipulate the page.
 
-* ``find()`` - evaluates specific selector on the page content and returns
-  the last matched element or ``null``:
+.. note::
 
-  .. code-block:: php
+    The ``DocumentElement`` instance represents the ``<html>`` node in the
+    DOM. It is equivalent to ``document.documentElement`` in the Javascript
+    DOM API.
 
-      $fieldElement = $page->find('named',
-          array('field', 'id|name|value|label')
-      );
-      $elementByCss = $page->find('css', 'h3 > a');
+Traversal Methods
+-----------------
 
-* ``findAll()`` - evaluates specific selector on the page content and returns
-  an array of matched elements:
+Elements have 2 main traversal methods: ``ElementInterface::findAll`` returns
+an array of ``NodeElement`` instances matching the provided :ref:`selector <selectors>`
+inside the current element while ``ElementInterface::find`` returns the first
+match or ``null`` when there is none.
 
-  .. code-block:: php
+The ``TraversableElement`` class also provides a bunch of shortcut methods
+on top of ``find()`` to make it easier to achieve many common use cases:
 
-      $fieldElements = $page->findAll('named',
-          array('field', 'id|name|value|label')
-      );
-      $elementsByCss = $page->findAll('css', 'h3 > a');
+``ElementInterface::has``
+    Checks whether a child element matches the given selector but without
+    returning it.
 
-Also, there's a bunch of shortcut methods:
+``TraversableElement::findById``
+    Looks for a child element with the given id.
 
-* ``findById()`` - will search for an element by its ID
-* ``findLink()`` - will search for a link with ``link`` named selector
-* ``findButton()`` - will search for a button with ``button`` named selector
-* ``findField()`` - will search for a field with ``field`` named selector
+``TraversableElement::findLink``
+    Looks for a link with the given text, title, id or ``alt`` attribute
+    (for images used inside links).
+
+``TraversableElement::findButton``
+    Looks for a button with the given text, title, id, ``name`` attribute
+    or ``alt`` attribute (for images used inside links).
+
+``TraversableElement::findField``
+    Looks for a field (``input``, ``textarea`` or ``select``) with the given
+    label, placeholder, id or ``name`` attribute.
+
+.. note::
+
+    These shortcuts are returning a single element. If you need to find all
+    matches, you will need to use ``findAll`` with the :ref:`named selector <named-selector>`.
 
 Nested Traversing
 ~~~~~~~~~~~~~~~~~
 
-Every ``find*()`` method will return ``Behat\Mink\Element\NodeElement`` instance
+Every ``find*()`` method will return a ``Behat\Mink\Element\NodeElement`` instance
 and ``findAll()`` will return an array of such instances. The fun part is
-you can make same old traversing on such elements too:
+that you can make same old traversing on such elements as well:
 
 .. code-block:: php
 
     $registerForm = $page->find('css', 'form.register');
 
+    if (null === $registerForm) {
+        throw new \Exception('The element is not found');
+    }
+
     // find some field INSIDE form with class="register"
-    $field = $registerForm->findField('id|name|value|label');
+    $field = $registerForm->findField('Email');
+
+.. _selectors:
+
+Selectors
+---------
+
+The ``ElementInterface::find`` and ``ElementInterface::findAll`` methods
+support several kinds of selectors to find elements.
+
+CSS Selector
+~~~~~~~~~~~~
+
+The ``css`` selector type lets you use CSS expressions to search for elements
+on the page:
+
+.. code-block:: php
+
+    $title = $page->find('css', 'h1');
+
+    $buttonIcon = $page->find('css', '.btn > .icon');
+
+XPath Selector
+~~~~~~~~~~~~~~
+
+The ``xpath`` selector type lets you use XPath queries to search for elements
+on the page:
+
+.. code-block:: php
+
+    $anchorsWithoutUrl = $page->findAll('xpath', '//a[not(@href)]');
+
+.. caution::
+
+    This selector searches for an element inside the current node (which
+    is ``<html>`` for the page object). This means that trying to pass it
+    the XPath of and element retrieved with ``ElementInterface::getXpath``
+    will not work (this query includes the query for the root node). To check
+    whether an element object still exists on the browser page, use ``ElementInterface::isValid``
+    instead.
+
+.. _named-selector:
+
+Named Selectors
+~~~~~~~~~~~~~~~
+
+Named selectors provide a set of reusable queries for common needs. For conditions
+based on the content of elements, the named selector will try to find an
+exact match first. It will then fallback to partial matching in case there
+is no result for the exact match. The ``named_exact`` selector type can be
+used to force using only exact matching. The ``named_partial`` selector type
+can be used to apply partial matching without preferring exact matches.
+
+For the named selector type, the second argument of the ``find()`` method
+is an array with 2 elements: the name of the query to use and the value to
+search with this query:
+
+.. code-block:: php
+
+    $escapedValue = $session->getSelectorsHandler()->xpathLiteral('Go to top');
+
+    $topLink = $page->find('named', array('link', $escapedValue);
+
+.. caution::
+
+    The named selector requires escaping the value as XPath literal. Otherwise
+    the generated XPath query will be invalid.
+
+The following queries are supported by the named selector:
+
+``id``
+    Searches for an element by its id.
+``id_or_name``
+    Searches for an element by its id or name.
+``link``
+    Searches for a link by its id, title, img alt, rel or text.
+``button``
+    Searches for a button by its name, id, text, img alt or title.
+``link_or_button``
+    Searches for both links and buttons.
+``content``
+    Searches for a specific page content (text).
+``field``
+    Searches for a form field by its id, name, label or placeholder.
+``select``
+    Searches for a select field by its id, name or label.
+``checkbox``
+    Searches for a checkbox by its id, name, or label.
+``radio``
+    Searches for a radio button by its id, name, or label.
+``file``
+    Searches for a file input by its id, name, or label.
+``optgroup``
+    Searches for an optgroup by its label.
+``option``
+    Searches for an option by its content or value.
+``fieldset``
+    Searches for a fieldset by its id or legend.
+``table``
+    Searches for a table by its id or caption.
+
+Custom Selector
+~~~~~~~~~~~~~~~
+
+Mink lets you register your own selector types through implementing the ``Behat\Mink\Selector\SelectorInterface``.
+It should then be registered in the ``SelectorsHandler`` which is the registry
+of available selectors.
+
+The recommended way to register a custom selector is to do it when building
+your ``Session``:
+
+.. code-block:: php
+
+    $selector = new \App\MySelector();
+
+    $handler = new \Behat\Mink\Selector\SelectorsHandler();
+    $handler->registerSelector('mine', $selector);
+
+    $driver = // ...
+
+    $session = new \Behat\Mink\Session($driver, $handler);
