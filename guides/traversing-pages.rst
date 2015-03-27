@@ -11,7 +11,7 @@ DocumentElement and NodeElement
 
 The Element API consists of 2 main classes. The ``DocumentElement`` instance
 represents the page being displayed in the browser, while the ``NodeElement``
-class is used to represent any element inside the page. Both class are sharing
+class is used to represent any element inside the page. Both classes share
 a common set of methods to traverse the page (defined in ``TraversableElement``).
 
 The ``DocumentElement`` instance is accessible through the ``Session::getPage`` method:
