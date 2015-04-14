@@ -41,7 +41,7 @@ HTTP Basic auth         Yes                No         Yes     No        No
 Windows management      No                 Yes        No      Yes       Yes
 iFrames management      No                 Yes        No      Yes       No
 Request headers access  Yes                No         Yes     No        No
-Response headers        Yes                no         Yes     No        No
+Response headers        Yes                No         Yes     No        No
 Cookie manipulation     Yes                Yes        Yes     Yes       Yes
 Status code access      Yes                No         Yes     No        No
 Mouse manipulation      No                 Yes        Yes     Yes       Yes
