@@ -50,5 +50,5 @@ Keyboard actions        No                 Yes        Yes     Yes       Yes
 Element visibility      No                 Yes        No      Yes       Yes
 JS evaluation           No                 Yes        Yes     Yes       Yes
 Window resizing         No                 Yes        No      No        No
-Window maxizing         No                 Yes        No      Yes       No
+Window maximizing       No                 Yes        No      Yes       No
 ======================  =================  =========  ======  ========  ====
