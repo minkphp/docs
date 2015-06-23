@@ -29,7 +29,7 @@ is that such browser emulators require the installed browser, extra configuratio
 and are usually much slower than headless counterparts.
 
 So, the easy answer is to choose the best emulator for your project and use
-its API for testing. But as we've already seen, both browser types have both
+its API for testing. But as we've already seen, both browser emulator types have both
 advantages and disadvantages. If you choose headless browser emulator, you
 will not be able to test your JS/AJAX pages. And if you choose browser controller,
 your overall test suite will become very slow at some point. So, in real
