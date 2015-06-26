@@ -9,7 +9,7 @@ there is actually 2 completely different types of browser emulators out there:
 * Headless browser emulators
 * Browser controllers
 
-First type browsers are simple pure HTTP specification implementations, like
+First type browser emulators are simple pure HTTP specification implementations, like
 `Goutte`_. Those browser emulators send a real HTTP requests against an application
 and parse the response content. They are very simple to run and configure,
 because this type of emulators can be written in any available programming
@@ -29,7 +29,7 @@ is that such browser emulators require the installed browser, extra configuratio
 and are usually much slower than headless counterparts.
 
 So, the easy answer is to choose the best emulator for your project and use
-its API for testing. But as we've already seen, both browser types have both
+its API for testing. But as we've already seen, both browser emulator types have both
 advantages and disadvantages. If you choose headless browser emulator, you
 will not be able to test your JS/AJAX pages. And if you choose browser controller,
 your overall test suite will become very slow at some point. So, in real
