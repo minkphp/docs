@@ -52,10 +52,11 @@ Interacting with the Page
 -------------------------
 
 The session gives you access to the page through the ``Session::getPage``
-method. This allows you to :doc:`traverse </guides/traversing-pages>` and
-:doc:`manipulate </guides/manipulating-pages>` it. The next chapters cover
-the page API in depth. Most of what you'll do with Mink will use this object,
-but you can continue reading to learn more about the Session.
+method. This allows you to :doc:`traverse the page </guides/traversing-pages>`,
+:doc:`manipulate page elements </guides/traversing-pages>` and
+:doc:`interact </guides/interacting-with-pages>` with them. The next chapters
+cover the page API in depth. Most of what you'll do with Mink will use this
+object, but you can continue reading to learn more about the Session.
 
 Using the Browser History
 -------------------------

@@ -71,6 +71,7 @@ Learn Mink with the topical guides:
     guides/session
     guides/traversing-pages
     guides/manipulating-pages
+    guides/interacting-with-pages
     guides/drivers
     guides/managing-sessions
     contributing

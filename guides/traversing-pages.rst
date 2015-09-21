@@ -3,8 +3,9 @@ Traversing Pages
 
 Most usages of Mink will involve working with the page opened in your browser.
 This is done thanks to the powerful Element API. This API allows to traverse
-the page (similar to the DOM in Javascript) and to interact with it, which
-will be covered in the :doc:`next chapter </guides/manipulating-pages>`.
+the page (similar to the DOM in Javascript), :doc:`manipulate page elements </guides/traversing-pages>`
+and to :doc:`interact with them </guides/interacting-with-pages>`, which
+will be covered in the next chapters.
 
 DocumentElement and NodeElement
 -------------------------------

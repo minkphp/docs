@@ -36,11 +36,10 @@ your overall test suite will become very slow at some point. So, in real
 world we should use both! And that's why you need a **Mink**.
 
 **Mink** removes API differences between different browser emulators providing
-different drivers (read in :doc:`/guides/drivers` chapter) for
-every browser emulator and providing you with the easy way to control the
-browser (:doc:`/guides/session`), traverse pages
-(:doc:`/guides/traversing-pages`) or manipulate page elements
-(:doc:`/guides/manipulating-pages`).
+different drivers (read in :doc:`/guides/drivers` chapter) for every browser
+emulator and providing you with the easy way to control the browser (:doc:`/guides/session`),
+traverse pages (:doc:`/guides/traversing-pages`), manipulate page elements
+(:doc:`/guides/manipulating-pages`) or interact with them (:doc:`/guides/interacting-with-pages`).
 
 .. _Goutte: https://github.com/FriendsOfPHP/Goutte
 .. _Sahi: http://sahi.co.in/w/
