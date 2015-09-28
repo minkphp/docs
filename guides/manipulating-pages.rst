@@ -37,7 +37,7 @@ The ``NodeElement`` class gives you access to HTML attributes of the element.
 
     $el = $page->find('css', '.something');
 
-    if ($el->hasAttribute('href') {
+    if ($el->hasAttribute('href')) {
         echo $el->getAttribute('href');
     } else {
         echo 'This anchor is not a link. It does not have an href.';
