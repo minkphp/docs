@@ -74,6 +74,7 @@ Learn Mink with the topical guides:
     guides/interacting-with-pages
     guides/drivers
     guides/managing-sessions
+    guides/assertion-system
     contributing
 
 Testing Tools Integration
