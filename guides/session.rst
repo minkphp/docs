@@ -34,7 +34,7 @@ Basic Browser Interaction
 
 Now that your session is started, you'll want to open a page with it. Just
 after starting, the session is not on any page (in a real browser, you would
-on the ``about:blank`` page), and calling any other action is likely to fail.
+be on the ``about:blank`` page), and calling any other action is likely to fail.
 
 .. code-block:: php
 
