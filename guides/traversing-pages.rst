@@ -141,7 +141,7 @@ search with this query:
 
     $escapedValue = $session->getSelectorsHandler()->xpathLiteral('Go to top');
 
-    $topLink = $page->find('named', array('link', $escapedValue);
+    $topLink = $page->find('named', array('link', $escapedValue));
 
 .. caution::
 
