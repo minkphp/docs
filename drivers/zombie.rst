@@ -12,6 +12,11 @@ the system.
 Installation
 ------------
 
+.. note::
+
+    On Mac you need to install Xcode for zombie.js to work.
+    https://developer.apple.com/xcode/
+
 ZombieDriver is available through Composer:
 
 .. code-block:: bash
