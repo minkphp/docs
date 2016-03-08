@@ -47,3 +47,15 @@ That's it, now you can use Selenium2Driver:
 .. _Phantom.js implementation: http://phantomjs.org/
 .. _project website: http://seleniumhq.org/download/
 .. _Selenium2 (webdriver): http://seleniumhq.org/
+
+Integration with BrowserStack
+-----------------------------
+
+When you want to perform web testing on multiple browsers and operating systems, it can be quite complicated to maintain machines for each of the target environments. BrowserStack provides "remote web browsers as a service",
+making it easy to do this sort of matrix testing without having to maintain the multiple browser installations yourself.
+
+Check out `BrowserStack's repository`_ for an example integration with BrowserStack.
+
+.. _BrowserStack's repository: https://github.com/browserstack/behat-mink-browserstack
+
+
