@@ -19,7 +19,7 @@ speed and ability to run it without the need of a real browser. But this
 type of browsers has one big disadvantage, they have no JS/AJAX support.
 So, you can't test your rich GUI web applications with headless browsers.
 
-Second browser emulators type are browser controllers. Those emulators aims
+Second browser emulators type are browser controllers. Those emulators aim
 to control the real browser. That's right, a program to control another program.
 Browser controllers simulate user interactions on browser and are able to
 retrieve actual information from current browser page. `Selenium`_ and `Sahi`_
