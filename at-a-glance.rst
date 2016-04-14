@@ -24,7 +24,7 @@ to control the real browser. That's right, a program to control another program.
 Browser controllers simulate user interactions on browser and are able to
 retrieve actual information from current browser page. `Selenium`_ and `Sahi`_
 are the two most famous browser controllers. The main advantage of browser
-controllers usage is the support for JS/AJAX interactions on page. Disadvantage
+controllers usage is the support for JS/AJAX interactions on page. The disadvantage
 is that such browser emulators require the installed browser, extra configuration
 and are usually much slower than headless counterparts.
 
