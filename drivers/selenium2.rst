@@ -54,7 +54,11 @@ Integration with BrowserStack
 When you want to perform web testing on multiple browsers and operating systems, it can be quite complicated to maintain machines for each of the target environments. BrowserStack provides "remote web browsers as a service",
 making it easy to do this sort of matrix testing without having to maintain the multiple browser installations yourself.
 
+Check out `BrowserStack's documentation`_  for a list of all capabilites. 
+
 Check out `BrowserStack's repository`_ for an example integration with BrowserStack.
+
+.. _BrowserStack's documentation: https://www.browserstack.com/automate/capabilities
 
 .. _BrowserStack's repository: https://github.com/browserstack/behat-mink-browserstack
 
