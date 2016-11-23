@@ -31,7 +31,7 @@ The recommended way to install Mink with all its dependencies is through
 
     For local installations of composer you must call it like this:
     ``$ php composer.phar require behat/mink`` .
-    In this case you must use the different call 
+    In this case you must use the different call
     ``php composer.phar`` everywhere instead of the simple command ``composer``.
 
 Everything will be installed inside ``vendor`` folder.
@@ -54,6 +54,7 @@ Finally, include Composer autoloading script to your project:
     - SeleniumDriver - ``behat/mink-selenium-driver``
     - SahiDriver - ``behat/mink-sahi-driver``
     - WUnitDriver - ``behat/mink-wunit-driver``
+    - PhantomJSDriver - ``jcalderonzumba/mink-phantomjs-driver`` (third-party driver)
 
     If you're newcomer or just don't know what to choose, you should probably
     start with the GoutteDriver and the Selenium2Driver (you will be able
@@ -73,6 +74,7 @@ Learn Mink with the topical guides:
     guides/manipulating-pages
     guides/interacting-with-pages
     guides/drivers
+    guides/third-party-drivers
     guides/managing-sessions
     contributing
 
