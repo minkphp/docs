@@ -139,14 +139,7 @@ search with this query:
 
 .. code-block:: php
 
-    $escapedValue = $session->getSelectorsHandler()->xpathLiteral('Go to top');
-
     $topLink = $page->find('named', array('link', $escapedValue));
-
-.. caution::
-
-    The named selector requires escaping the value as XPath literal. Otherwise
-    the generated XPath query will be invalid.
 
 The following queries are supported by the named selector:
 
