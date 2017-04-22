@@ -19,7 +19,7 @@ SeleniumDriver is available through Composer:
 
 .. code-block:: bash
 
-    $ composer require behat/mink-selenium-driver
+    $ composer require behat/mink-selenium2-driver
 
 In order to talk with the selenium server, you should install and configure
 it first:
