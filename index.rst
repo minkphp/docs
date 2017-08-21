@@ -25,12 +25,12 @@ The recommended way to install Mink with all its dependencies is through
 
 .. code-block:: bash
 
-    $ composer require behat/mink
+    $ composer require --dev behat/mink
 
 .. note::
 
     For local installations of composer you must call it like this:
-    ``$ php composer.phar require behat/mink`` .
+    ``$ php composer.phar require --dev behat/mink`` .
     In this case you must use the different call 
     ``php composer.phar`` everywhere instead of the simple command ``composer``.
 
