@@ -16,7 +16,7 @@ BrowserKitDriver is a pure PHP library available through Composer:
 .. note::
 
     The BrowserKit component only provides an abstract implementation. The
-    actual implementation are provided by other projects, like `Goutte`_
+    actual implementation is provided by other projects, like `Goutte`_
     or the `Symfony HttpKernel`_ component.
 
     If you are using Goutte, you should use the special :doc:`/drivers/goutte`

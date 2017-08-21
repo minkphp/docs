@@ -43,7 +43,7 @@ one single container object:
 
 .. note::
 
-    Mink will even lazy-start your sessions when needed (on first ``getSession()``
+    Mink will even lazy-start your sessions when needed (on the first ``getSession()``
     call). So, the browser will not be started until you really need it!
 
 Or you could even omit the session name in default cases:

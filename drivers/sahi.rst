@@ -2,7 +2,7 @@ SahiDriver
 ==========
 
 SahiDriver provides a bridge for the `Sahi`_ browser controller. Sahi is
-a new JS browser controller, that fast replaced old Selenium testing suite.
+a new JS browser controller, that fast replaced the old Selenium testing suite.
 It's both easier to setup and to use than classical Selenium. It has a GUI
 installer for each popular operating system out there and is able to control
 every systems browser through a special bundled proxy server.
@@ -43,7 +43,7 @@ to control it with ``Behat\Mink\Driver\SahiDriver``:
 
 .. note::
 
-    Notice, that first argument of ``SahiDriver`` is always a browser name,
+    Notice, that the first argument of ``SahiDriver`` is always a browser name,
     `supported by Sahi`_.
 
 If you want more control during the driver initialization, like for example
