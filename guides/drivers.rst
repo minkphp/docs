@@ -6,7 +6,7 @@ types, often written in different languages? Through drivers! A Mink driver
 is a simple class, that implements ``Behat\Mink\Driver\DriverInterface``.
 This interface describes bridge methods between Mink and real browser emulators.
 Mink always talks with browser emulators through its driver. It doesn't know
-anything about how to start/stop or traverse page in that particular browser
+anything about how to start/stop or traverse pages in that particular browser
 emulator. It only knows what driver method it should call in order to do this.
 
 Mink comes with six drivers out of the box:
@@ -26,7 +26,7 @@ Mink comes with six drivers out of the box:
 Driver Feature Support
 ----------------------
 
-Although Mink does its best on removing browser differences between different
+Although Mink does its best to remove browser differences between different
 browser emulators, it can't do much in some cases. For example, BrowserKitDriver
 cannot evaluate JavaScript and Selenium2Driver cannot get the response status
 code. In such cases, the driver will always throw a meaningful

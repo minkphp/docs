@@ -13,14 +13,14 @@ the links and press the buttons on the page.
 .. note::
 
     These methods are actually equivalent internally (pressing a button involves
-    clicking on it). Having both methods allows to keep the code more readable.
+    clicking on it). Having both methods allows the code to be more readable.
 
 .. _interacting-with-forms:
 
 Interacting with Forms
 ----------------------
 
-The ``NodeElement`` class has a set of methods allowing to interact with
+The ``NodeElement`` class has a set of methods allowing interaction with
 forms:
 
 ``NodeElement::getValue``
@@ -67,7 +67,7 @@ forms:
 Interacting with the Mouse
 --------------------------
 
-The ``NodeElement`` class offers a set of methods allowing to interact with
+The ``NodeElement`` class offers a set of methods allowing interaction with
 the mouse:
 
 ``NodeElement::click``
@@ -109,8 +109,8 @@ Mink supports drag'n'drop of one element onto another:
 Shortcut Methods
 ----------------
 
-The ``TraversableElement`` class provides a few shortcut methods allowing
-to find a child element on the page and perform an action on it immediately:
+The ``TraversableElement`` class provides a few shortcut methods that allow
+finding a child element on the page and performing an action on it immediately:
 
 ``TraversableElement::clickLink``
     Looks for a link (see findLink) and clicks on it.
@@ -131,9 +131,9 @@ to find a child element on the page and perform an action on it immediately:
     Looks for a select or radio group (see findField) and selects a choice in it.
 
 ``TraversableElement::attachFileToField``
-    Looks for a file field (see findField) and attach a file to it.
+    Looks for a file field (see findField) and attaches a file to it.
 
 .. note::
 
-    All these shortcut methods are throwing an ``ElementNotFoundException``
-    in case the child element cannot be found.
+    All these shortcut methods throw an ``ElementNotFoundException``
+    if the child element cannot be found.

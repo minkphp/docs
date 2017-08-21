@@ -139,7 +139,7 @@ The method can also be used to reset a previous authentication:
 .. note::
 
     Automatic HTTP authentication is only supported in headless drivers.
-    Because HTTP authentication in browser requires manual user action, that
+    Because HTTP authentication in the browser requires manual user action, that
     can't be done remotely for browser controllers.
 
 Javascript Evaluation

@@ -61,7 +61,7 @@ on top of ``find()`` to make it easier to achieve many common use cases:
 
 .. note::
 
-    These shortcuts are returning a single element. If you need to find all
+    These shortcuts return a single element. If you need to find all
     matches, you will need to use ``findAll`` with the :ref:`named selector <named-selector>`.
 
 Nested Traversing
@@ -69,7 +69,7 @@ Nested Traversing
 
 Every ``find*()`` method will return a ``Behat\Mink\Element\NodeElement`` instance
 and ``findAll()`` will return an array of such instances. The fun part is
-that you can make same old traversing on such elements as well:
+that you can use the same methods of traversing on such elements as well:
 
 .. code-block:: php
 
@@ -116,7 +116,7 @@ on the page:
 
     This selector searches for an element inside the current node (which
     is ``<html>`` for the page object). This means that trying to pass it
-    the XPath of and element retrieved with ``ElementInterface::getXpath``
+    the XPath of an element retrieved with ``ElementInterface::getXpath``
     will not work (this query includes the query for the root node). To check
     whether an element object still exists on the browser page, use ``ElementInterface::isValid``
     instead.
@@ -128,7 +128,7 @@ Named Selectors
 
 Named selectors provide a set of reusable queries for common needs. For conditions
 based on the content of elements, the named selector will try to find an
-exact match first. It will then fallback to partial matching in case there
+exact match first. It will then fallback to partial matching if there
 is no result for the exact match. The ``named_exact`` selector type can be
 used to force using only exact matching. The ``named_partial`` selector type
 can be used to apply partial matching without preferring exact matches.

@@ -60,19 +60,18 @@ The ``Element`` class provides access to the content of elements.
 .. note::
 
     ``getText()`` will strip tags and unprinted characters out of the response,
-    including newlines. So it'll basically return the text, that user sees
+    including newlines. So it'll basically return the text that the user sees
     on the page.
 
 Checking Element Visibility
 ---------------------------
 
-The ``NodeElement::isVisible`` methods allows to checks whether the element
-is visible.
+The ``NodeElement::isVisible`` method checks whether the element is visible.
 
 Accessing Form State
 --------------------
 
-The ``NodeElement`` class allows to access the state of form elements:
+The ``NodeElement`` class allows access to the state of form elements:
 
 ``NodeElement::getValue``
     Gets the value of the element. See :ref:`interacting-with-forms`.
@@ -86,8 +85,8 @@ The ``NodeElement`` class allows to access the state of form elements:
 Shortcut methods
 ~~~~~~~~~~~~~~~~
 
-The ``TraversableElement`` class provides a few shortcut methods allowing
-to find a child element in the page and checks the state of it immediately:
+The ``TraversableElement`` class provides a few shortcut methods that allow
+finding a child element in the page and checking the state of it immediately:
 
 ``TraversableElement::hasCheckedField``
     Looks for a checkbox (see findField) and checks whether it is checked.

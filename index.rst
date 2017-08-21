@@ -1,13 +1,13 @@
 Welcome to the Mink documentation!
 ==================================
 
-One of the most important parts in the web is a browser. Browser is the window
+One of the most important parts in the web is a browser. A browser is the window
 through which web users interact with web applications and other users. Users
 are always talking with web applications through browsers.
 
 So, in order to test that our web application behaves correctly, we need
 a way to simulate this interaction between the browser and the web application
-in our tests. We need a **Mink**.
+in our tests. We need **Mink**.
 
 Mink is an open source browser controller/emulator for web applications, written
 in PHP 5.3.
@@ -34,8 +34,8 @@ The recommended way to install Mink with all its dependencies is through
     In this case you must use the different call 
     ``php composer.phar`` everywhere instead of the simple command ``composer``.
 
-Everything will be installed inside ``vendor`` folder.
-Finally, include Composer autoloading script to your project:
+Everything will be installed inside the ``vendor`` folder.
+Finally, include the Composer autoloading script to your project:
 
 .. code-block:: php
 
@@ -55,9 +55,9 @@ Finally, include Composer autoloading script to your project:
     - SahiDriver - ``behat/mink-sahi-driver``
     - WUnitDriver - ``behat/mink-wunit-driver``
 
-    If you're newcomer or just don't know what to choose, you should probably
+    If you're a newcomer or just don't know what to choose, you should probably
     start with the GoutteDriver and the Selenium2Driver (you will be able
-    to tuneup it later):
+    to tune it up later):
 
 Guides
 ------
