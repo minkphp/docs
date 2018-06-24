@@ -50,6 +50,7 @@ Finally, include the Composer autoloading script to your project:
     - GoutteDriver - ``behat/mink-goutte-driver``
     - Selenium2Driver - ``behat/mink-selenium2-driver``
     - BrowserKitDriver - ``behat/mink-browserkit-driver``
+    - ChromeDriver - ``dmore/chrome-mink-driver``
     - ZombieDriver - ``behat/mink-zombie-driver``
     - SeleniumDriver - ``behat/mink-selenium-driver``
     - SahiDriver - ``behat/mink-sahi-driver``
