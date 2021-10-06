@@ -10,15 +10,15 @@ a way to simulate this interaction between the browser and the web application
 in our tests. We need **Mink**.
 
 Mink is an open source browser controller/emulator for web applications, written
-in PHP 5.3.
+in PHP.
 
 Read :doc:`/at-a-glance` to learn more about Mink and why you need it.
 
 Installation
 ------------
 
-Mink is a php 5.3 library that you'll use inside your test suites or project.
-Before you begin, ensure that you have at least PHP 5.3.1 installed.
+Mink is a php library that you'll use inside your test suites or project.
+Before you begin, ensure that you have at least PHP 5.4 installed.
 
 The recommended way to install Mink with all its dependencies is through
 `Composer`_:
