@@ -15,6 +15,12 @@ the links and press the buttons on the page.
     These methods are actually equivalent internally (pressing a button involves
     clicking on it). Having both methods allows the code to be more readable.
 
+.. note::
+
+    Some drivers, notably Chromedriver is async and you need to wait for the 
+    results to arrive. The ``Element::waitFor`` helper method makes this easier.
+
+
 .. _interacting-with-forms:
 
 Interacting with Forms
