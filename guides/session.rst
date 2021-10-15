@@ -184,10 +184,10 @@ Resetting the Session
 ---------------------
 
 The primary aim for Mink is to provide a single consistent web browsing API
-for acceptance tests. But a very important part in testing is isolation.
+for acceptance tests. But a very important part in testing is isolation.  
 
-Mink provides two very useful methods to isolate tests, which can be used
-in your test's ``teardown`` methods:
+So Mink provides two very useful methods to isolate tests, which can be used
+in your tests' ``teardown`` methods:
 
 .. code-block:: php
 
@@ -205,10 +205,16 @@ need to start the session before any other action. The ``Session::restart``
 shortcut allows you to do these 2 steps in a single call.
 
 The drawback of closing the browser and starting it again is that it takes
-time. In many cases, a lower level of isolation is enough in favor of a faster
-resetting. The ``Session::reset`` method covers this use case. It will try
-to clear the cookies and reset the request headers and the browser history
-to the limit of the driver possibilities.
+time. In many cases, a shallower level of isolation is enough in favor of a 
+faster resetting. The ``Session::reset`` method covers this use case. It 
+will try to clear the cookies, reset the request headers and clear the 
+browser history - though there are some driver limitations that mean this 
+isn't always effective.  For example:
+
+* Selenium will not allow cookies to be cleared from anything other than 
+  the current domain.  So a test that runs across different domains (for 
+  example your site and PayPal's sandbox) cannot be properly isolated using 
+  ``Session::reset()``.
 
 Taking all this into account, it is recommended to use ``Session::reset()``
 by default and to call ``Session::stop()`` when you need really full isolation.
